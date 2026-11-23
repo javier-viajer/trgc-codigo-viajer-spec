@@ -1,0 +1,69 @@
+{
+  "version": "v1.7",
+  "test_name": "test_long_window_quasistationarity",
+  "step_point": "Punto 3 — Cuasi-estacionariedad en ventana larga",
+  "v1_6_isolated": true,
+  "hook_source": "hooks_47d_map_v17.py",
+  "exit_code": 0,
+  "parameters": {
+    "coup": 0.825,
+    "seed": 42,
+    "horizon_steps": 9600,
+    "n_windows": 4,
+    "steps_per_window": 2400
+  },
+  "spectral_windows": [
+    {
+      "window_index": 1,
+      "steps_in_window": 2400,
+      "rho_ntriv": 0.974885,
+      "norm2_perp": 0.990361,
+      "ge1": 0,
+      "dtheta_mean": 0.01808
+    },
+    {
+      "window_index": 2,
+      "steps_in_window": 2400,
+      "rho_ntriv": 0.974885,
+      "norm2_perp": 0.990361,
+      "ge1": 0,
+      "dtheta_mean": 0.01784
+    },
+    {
+      "window_index": 3,
+      "steps_in_window": 2400,
+      "rho_ntriv": 0.974885,
+      "norm2_perp": 0.990361,
+      "ge1": 0,
+      "dtheta_mean": 0.01809
+    },
+    {
+      "window_index": 4,
+      "steps_in_window": 2400,
+      "rho_ntriv": 0.974885,
+      "norm2_perp": 0.990361,
+      "ge1": 0,
+      "dtheta_mean": 0.01808
+    }
+  ],
+  "dtheta_long_window": {
+    "n_samples": 9600,
+    "range": [0.01, 0.026],
+    "unique_count": 2161,
+    "stuck_fraction": 0.0023,
+    "stuck_percent": "0.23%",
+    "max_stuck_fraction_limit": 0.25,
+    "max_inter_window_drift": 0.000114
+  },
+  "summary": {
+    "max_rho_ntriv": 0.974885,
+    "max_norm2_perp": 0.990361,
+    "ge1": 0,
+    "quasistationary_ok": true
+  },
+  "governance_4o_factor": {
+    "nivel_II": "retenido",
+    "nivel_III": "abierto",
+    "auto_promotion": false
+  }
+}
