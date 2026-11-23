@@ -1,37 +1,40 @@
-# Especificación de Contraste Estricto: Criterio Espectral Neimark–Sacker (`test_spectral_ns_strict`)
+# Especificación de Contraste: Proxy de Deformación Neimark–Sacker (`test_ns_deformation_proxy`)
 
 **Rama:** `v1.7` (`v17`)  
-**Nivel de rigor:** Nivel II $\to$ Nivel III (Criterio espectral estricto de bifurcación)  
-**Aislamiento:** Prohibida cualquier importación o referencia a rutas de `v1.6`.  
-**Convención de notación:** El símbolo $\lambda$ queda reservado exclusivamente para el **4º Factor**; los autovalores espectrales se denotan por $\mu_k$.
+**Nivel de rigor:** Nivel II (Indicador numérico auxiliar — **no** constituye demostración de bifurcación)  
+**Convención de notación:** El símbolo $\lambda$ queda reservado exclusivamente para el **4º Factor**. Los autovalores del Jacobiano proyectado $J_\perp$ se denotan por $\mu_k \in \mathbb{C}$.
 
 ---
 
-## 1. Propósito
+## 1. Objetivo
 
-Establecer las condiciones espectrales mínimas necesarias (aunque todavía no suficientes sin el cálculo del coeficiente cúbico) para certificar un cruce limpio de tipo Neimark–Sacker en el mapa discreto 47D acoplado `step_47d` tras proyectar el modo neutro de fase (`neutral_idx = 46`).
-
----
-
-## 2. Condiciones Espectrales Requeridas en $\text{coup} = \text{coup}_c$
-
-Para el espectro $\{\mu_1, \dots, \mu_{46}\}$ del bloque no neutro $J_{\text{sub}}$ obtenido mediante `project_non_neutral(J, neutral_idx=46)`:
-
-1. **Par complejo conjugado único en el borde unidad:**
-   Existe un único par complejo conjugado $\mu_{1,2}(\text{coup}_c) = e^{\pm i \vartheta_c}$ con $0 < \vartheta_c < \pi$ tal que:
-   $$\big||\mu_{1,2}(\text{coup}_c)| - 1\big| < \text{tol}_{\text{rad}} \quad (\text{con } \text{tol}_{\text{rad}} = 10^{-6})$$
-2. **Separación espectral estricta del resto de modos:**
-   Todos los demás autovalores no neutros permanecen estrictamente en el interior del disco unidad con brecha acotada:
-   $$\max_{k \ge 3} |\mu_k(\text{coup}_c)| \le 1 - \Delta_{\text{gap}} \quad (\text{con } \Delta_{\text{gap}} \ge 5 \times 10^{-3})$$
-3. **Condición de transversalidad:**
-   $$\left.\frac{d|\mu_1(\text{coup})|}{d\,\text{coup}}\right|_{\text{coup}=\text{coup}_c} > 0$$
-4. **Ausencia de resonancias fuertes ($q = 1, 2, 3, 4$):**
-   $$e^{i q \vartheta_c} \neq 1 \quad \text{para } q \in \{1, 2, 3, 4\}$$
-   (es decir, $\vartheta_c \notin \{0, \pi, \frac{2\pi}{3}, \frac{\pi}{2}\}$ dentro de una banda de exclusión de $\pm 10^{-3}\text{ rad}$).
+Definir un indicador operativo (*proxy*) que detecte si la variación del parámetro de acoplamiento `coup` (y del parámetro del **4º Factor**, `cuarto_factor`) desplaza un par de autovalores complejos conjugados no neutros de $J_\perp = P_\perp J P_\perp$ hacia la circunferencia unidad $|\mu| = 1$ con fase no trivial, sin confundir este indicio con una prueba analítica de bifurcación de Neimark–Sacker.
 
 ---
 
-## 3. Veredicto de Auditoría
+## 2. Definición del Indicador (*Proxy*)
 
-* **PASS (Espectral):** se cumplen simultáneamente las cuatro condiciones anteriores sobre el Jacobiano acoplado `compute_jacobian_47d`. Habilita el paso al análisis de forma normal (signo del coeficiente cúbico de Lyapunov, Punto Crítico 3 de `STATUS.md`).
-* **FAIL / RETAINED:** si existe degeneración de múltiples pares en el borde unidad, resonancia fuerte ($q \le 4$) o ausencia de transversalidad, el régimen queda retenido en **Nivel II** sin ascenso.
+Dado el Jacobiano 47D acoplado $J(\text{coup})$ evaluado en $x_\star$ mediante `compute_jacobian_47d` y su proyección ortogonal $J_\perp$ tras excluir el modo neutro de fase (`neutral_idx = 46`):
+
+1. **Par complejo dominante:** se selecciona el autovalor $\mu_\star = r_\star e^{i \vartheta_\star}$ del bloque no neutro `46x46` que maximiza $|\mu|$ sujeto a $|\operatorname{Im}(\mu)| > \varepsilon_{\text{imag}}$ (con $\varepsilon_{\text{imag}} = 10^{-4}$).
+2. **Margen radial a la circunferencia unidad:**
+   $$\delta_{\mathrm{NS}}(\text{coup}) = 1 - |\mu_\star(\text{coup})|$$
+3. **Tasa de cruce radial:**
+   $$\chi_{\mathrm{NS}} = \frac{\Delta |\mu_\star|}{\Delta \text{coup}}$$
+
+---
+
+## 3. Criterios de Evaluación (Aceptación / Alerta)
+
+| Condición observada | Interpretación de auditoría | Estado resultante |
+| :--- | :--- | :--- |
+| $\delta_{\mathrm{NS}} > 0$ y $\chi_{\mathrm{NS}} \approx 0$ en todo el rango | Régimen transversalmente contractivo sin aproximación a cruce | **Estable subcrítico (sin indicio NS)** |
+| $\delta_{\mathrm{NS}} \to 0^+$ con $\chi_{\mathrm{NS}} > 0$ y $\vartheta_\star \notin \{0, \pi\}$ | Indicio numérico de aproximación a bifurcación de Neimark–Sacker | **Proxy positivo — remite a `test_spectral_ns_strict.md`** |
+| $\delta_{\mathrm{NS}} \le 0$ sin control de fase ($\vartheta_\star \in \{0, \pi\}$) | Posible bifurcación de silla-nodo o doblamiento de periodo, no NS | **Descartado como NS** |
+
+---
+
+## 4. Limitaciones Explícitas
+
+* Un valor positivo de este *proxy* **no demuestra** la existencia de un toro invariante ni determina el signo del primer coeficiente de Lyapunov (carácter supercrítico o subcrítico).
+* Todo resultado positivo exige contraste inmediato bajo los criterios estrictos de `tests/v1_7/test_spectral_ns_strict.md`.
