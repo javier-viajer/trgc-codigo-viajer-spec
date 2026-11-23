@@ -1,0 +1,40 @@
+{
+  "version": "v1.7",
+  "mode": "Modo_A_NS_EW_continuo",
+  "architecture_dim": 47,
+  "blocks": ["mass_24", "state_22", "theta"],
+  "n_edges": 276,
+  "v1_6_isolated": true,
+  "reference": {
+    "seed": 42,
+    "coup": 0.825,
+    "n_steps": 2399,
+    "start_step": 800
+  },
+  "L_22": {
+    "rho_numeric": 0.974885,
+    "norm2": 0.99,
+    "gershgorin_bound": 1.039248,
+    "less_than_one_certified": true,
+    "note": "||L_22||_2 = 0.990000 < 1.0 certifica rho(L_22) <= 0.990000 < 1.0; Gershgorin 1.039248 es conservadora"
+  },
+  "J_47": {
+    "lambda_neutral_theta": {
+      "real": 1.0,
+      "imag": 0.0,
+      "mod": 1.0,
+      "interpretation": "Deslizamiento neutro de fase theta, no inestabilidad"
+    },
+    "rho_full": 1.0,
+    "norm2_full": 1.002126,
+    "rho_ntriv": 0.974885,
+    "norm2_projected_perp": 0.990486,
+    "nominal_linear_margin_eta0": 0.009514,
+    "less_than_one_ntriv_certified": true
+  },
+  "governance_4o_factor": {
+    "nivel_II": "retenido",
+    "nivel_III": "abierto",
+    "auto_promotion": false
+  }
+}
