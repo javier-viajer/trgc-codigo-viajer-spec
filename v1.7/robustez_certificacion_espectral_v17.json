@@ -1,0 +1,22 @@
+{
+  "version": "v1.7",
+  "mode": "Modo_A_NS_EW_continuo",
+  "architecture_dim": 47,
+  "n_edges": 276,
+  "v1_6_isolated": true,
+  "ensemble_size": 11,
+  "seeds_tested": [42, 101, 202, 303, 404, 505, 606, 707],
+  "couplings_tested": [0.8, 0.825, 0.85],
+  "metrics_summary": {
+    "rho_ntriv": 0.974885,
+    "norm2_perp_range": [0.990483, 0.990489],
+    "norm2_L22": 0.99,
+    "all_below_one": true
+  },
+  "all_ok": true,
+  "governance_4o_factor": {
+    "nivel_II": "retenido",
+    "nivel_III": "abierto",
+    "auto_promotion": false
+  }
+}
