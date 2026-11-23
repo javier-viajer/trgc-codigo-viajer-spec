@@ -1,0 +1,32 @@
+{
+  "version": "v1.7",
+  "step_point": "Punto 4 — Consolidacion final",
+  "v1_6_isolated": true,
+  "files_present_count": "10/10",
+  "present_files": [
+    "AUDITORIA_v17_modo_a.md",
+    "STATUS.md",
+    "informe_contrastes_v17.json",
+    "certificacion_espectral_v17.json",
+    "robustez_certificacion_espectral_v17.json",
+    "NOTA_CERTIFICACION_ESPECTRAL_v17.md",
+    "ventana_larga_cuasi_estacionariedad_v17.json",
+    "verify_v17.py",
+    "hooks_47d_map_v17.py",
+    "test_long_window_quasistationarity_v17.py"
+  ],
+  "missing_files": [],
+  "leaks_v16": [],
+  "json_valid": {
+    "informe_contrastes_v17.json": true,
+    "certificacion_espectral_v17.json": true,
+    "robustez_certificacion_espectral_v17.json": true,
+    "ventana_larga_cuasi_estacionariedad_v17.json": true
+  },
+  "ready_for_4o_factor_review": true,
+  "governance_4o_factor": {
+    "nivel_II": "retenido",
+    "nivel_III": "abierto",
+    "auto_promotion": false
+  }
+}
