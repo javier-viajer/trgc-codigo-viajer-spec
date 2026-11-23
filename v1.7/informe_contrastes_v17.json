@@ -1,0 +1,115 @@
+{
+  "version": "v1.7",
+  "mode": "Modo_A_NS_EW_continuo",
+  "architecture": {
+    "state_dim": 47,
+    "blocks": ["mass_24", "state_22", "theta"],
+    "n_edges": 276,
+    "framework": "Codigo_Viajer",
+    "mechanisms": [
+      "Matriz_Suma_23",
+      "movimiento_helicoidal",
+      "conexiones_triangulo_a_cruz",
+      "nodos_contiguos",
+      "acoplamiento_Pi_3_to_4"
+    ]
+  },
+  "v1_6_isolated": true,
+  "exit_code": 0,
+  "spectral_grid_rows_expected": 225,
+  "contrasts": [
+    {
+      "id": "referencia",
+      "axes_off": [],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "n_steps": 2399,
+      "start_step": 800,
+      "max_mod": 0.9749,
+      "ge1": 0,
+      "im_nonzero_rows": 225,
+      "unique_dtheta": 2141,
+      "dtheta_range": [0.01, 0.026],
+      "stuck_fraction": 0.0008,
+      "notes": "Linea base (seed=42, coup=0.825, 276 aristas 1/dist, todo activo)"
+    },
+    {
+      "id": "pi34_off",
+      "axes_off": ["Pi_3_to_4"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.9749,
+      "ge1": 0,
+      "im_nonzero_rows": 225,
+      "unique_dtheta": 180,
+      "notes": "max_mod invariante (0.9749); cae la variedad de dtheta (2141 -> 180)"
+    },
+    {
+      "id": "aristas_276",
+      "axes_off": ["pesos_1_div_dist_nodos_contiguos_uniformes"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.9749,
+      "ge1": 0,
+      "im_nonzero_rows": 225,
+      "unique_dtheta": 2141,
+      "notes": "Efecto nulo en estas metricas frente a la referencia"
+    },
+    {
+      "id": "helicoidal_off",
+      "axes_off": ["movimiento_helicoidal"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.99,
+      "ge1": 0,
+      "im_nonzero_rows": 0,
+      "unique_dtheta": 2139,
+      "notes": "Desaparece Im!=0 (225 -> 0) y sube max_mod a 0.9900 sin cruzar 1.0"
+    },
+    {
+      "id": "suma23_off",
+      "axes_off": ["Matriz_Suma_23"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.99,
+      "ge1": 0,
+      "im_nonzero_rows": 225,
+      "unique_dtheta": 2139,
+      "notes": "Conserva Im!=0 (225) y sube max_mod a 0.9900 sin cruzar 1.0"
+    },
+    {
+      "id": "helical+s23_off",
+      "axes_off": ["movimiento_helicoidal", "Matriz_Suma_23"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.99,
+      "ge1": 0,
+      "im_nonzero_rows": 0,
+      "unique_dtheta": 2143,
+      "notes": "Sin efecto aditivo extra en max_mod (0.9900, ge1=0); Im!=0 en 0"
+    },
+    {
+      "id": "ablacion completa",
+      "axes_off": ["Pi_3_to_4", "movimiento_helicoidal", "Matriz_Suma_23"],
+      "exit_code": 0,
+      "seed": 42,
+      "coup": 0.825,
+      "max_mod": 0.99,
+      "ge1": 0,
+      "im_nonzero_rows": 0,
+      "unique_dtheta": 180,
+      "notes": "Espectro real en 0.9900 (ge1=0, Im!=0 en 0) y dtheta regular/pobre (180 unicos)"
+    }
+  ],
+  "governance_4o_factor": {
+    "nivel_II": "retenido",
+    "nivel_III": "abierto",
+    "auto_promotion": false
+  }
+}
