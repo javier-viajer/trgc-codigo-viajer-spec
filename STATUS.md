@@ -1,82 +1,73 @@
-# STATUS.md — Estado Epistemológico y Auditoría Técnica (`v1.7`)
+# STATUS — Estado de Auditoría y Validación TRCG / Código Viajer
 
-**Versión canónica:** `v1.7`  
-**Fecha:** 23 de noviembre de 2026  
-**Gobernanza:** **Nivel II retenido · Nivel III abierto** (sin ascenso automático)  
-**Aislamiento de versión:** `v1.6` aislada (`Fugas v1.6: []`)  
-**Reserva de notación:** El símbolo $\lambda$ queda estrictamente reservado al **4º Factor** (sometido a validación o refinamiento de **4º Factor**).
+- **Fecha de actualización:** 24 de noviembre de 2026
+- **Versión activa:** `v1.7` (transición hacia **Episodio 42**)
+- **Gobernanza:** **Nivel II retenido · Nivel III abierto** (sin ascenso automático)
+- **Aislamiento de versión:** `v1.6` aislada (`Fugas v1.6: []`)
+- **Reserva de notación:** $\lambda$ reservado en exclusiva al **4º Factor**
 
 ---
 
 ## 1. Marco de Gobernanza y Frontera Epistemológica
 
-* **Código Viajer (`v1.7`):** Validador dinámico operativo en $\mathbb{R}^4$ con decisiones `ALLOW` / `THROTTLE` / `REJECT` sobre estado $\mathbf{X} = (L, S, I, B) \in [0,1]^4$.
-* **TRCG / Pirámide-Parábola (`core/`, `dynamics/`, `boundary/`):** Marco matemático en desarrollo. No se afirma como teoría física completa.
-* **Nivel II retenido:** Consistencia estructural, derivación interna desde la 2-sección de los 264 triples, propiedades espectrales de $J_{24\times 24}$, variaciones explícitas de $\tilde{V}(T)$ con condiciones suficientes de monotonía en régimen asíncrono, análisis modal $\mathbb{Z}_4$ ($m=0,1,2,3$) y trazabilidad numérica afinada.
-* **Nivel III abierto:** Permanece abierto **sin ascenso automático**. La estabilidad dinámica o consistencia estructural sobre una arquitectura dada no acredita **emergencia espontánea** desde bases no pre-codificadas ni cierra la formalización de $\lambda$.
-* **Aislamiento de `v1.6`:** `v1.6` permanece aislada (`Fugas v1.6: []`).
+1. **Nivel I (Definición / Formalización):** Espacios admisibles, condiciones de existencia, unicidad o multiplicidad, criterios de estabilidad y espacios de estados explícitos.
+2. **Nivel II (Consistencia estructural y estabilidad dinámica — RETENIDO):** Propiedades verificadas sobre la arquitectura definida (simetría, diagonal/traza nula, equivariancia $\mathbb{Z}_4$, reconstrucción espectral, monotonía de funcionales en actualización asíncrona, convergencia a puntos fijos, regímenes no vacíos y geometría de cuencas).
+3. **Nivel III (Emergencia espontánea y cierre de $\lambda$ — ABIERTO sin ascenso automático):** La consistencia estructural, la multiplicidad de estados retenidos o la estabilidad dinámica en régimen no vacío **no** demuestran por sí solas emergencia espontánea desde bases no pre-codificadas ni validan formalmente $\lambda$.
+4. **Aislamiento:** La línea `v1.6` permanece aislada (`Fugas v1.6: []`). El símbolo $\lambda$ queda reservado en exclusiva al **4º Factor**.
 
 ---
 
-## 2. Verificación Estructural y Espectral de $J_{24\times 24}$ (264 Triples de $R$)
+## 2. Separación de Espacios y Regímenes Dinámicos
 
-* **Derivación interna:** Estructura binaria/relacional $E_R$ y acoplamientos $J_{24\times 24}$ derivados directamente de la 2-sección de los **264 triples** ($4 \times 6 = 24$ nodos), sin distancias geométricas externas.
-* **Comprobación matricial y bloques $6\times 6$ bajo $\mathbb{Z}_4$ ($U = F_4 \otimes I_6$):**
-  * Simetría $J = J^\top$: `0.00e+00` (exacta).
-  * Diagonal nula: `0.00` · Traza: `0.0`.
-  * Equivariancia $\mathbb{Z}_4$ (error relativo): `0.00` (exacta).
-  * Hermiticidad de los cuatro bloques de $6\times 6$ ($\widehat{J}^{(0)}, \widehat{J}^{(1)}, \widehat{J}^{(2)}, \widehat{J}^{(3)}$): $\sim 10^{-16}$ o mejor.
-  * Conjugación entre bloques rotacionales opuestos ($m=1$ y $m=3$): $\|\widehat{J}^{(3)} - \overline{\widehat{J}^{(1)}}\|_F = 3.26 \times 10^{-16}$ (mismo espectro real).
-  * Reconstrucción espectral (bloques frente a $J_{24\times 24}$ completa): error `4.50e-14`, espectro completo en `[-14.959, 72.226]` (valores extremos concentrados en $m=0$; modos transversales en $m=1,2,3$).
-* **Criterios de positividad deslindados:** (1) entradas/pesos no negativos, (2) semidefinición/definición positiva espectral o cuadrática (donde simetría con diagonal/traza nula y $M \succeq 0$ obliga a $M = 0$), y (3) dominio admisible y función barrera logarítmica.
+- **Espacio matricial relacional simétrico de diagonal nula:**
+  $$\mathcal{S} = \{R \in \mathbb{R}^{N\times N} : R^\top = R,\, r_{ii} = 0\}, \qquad \dim(\mathcal{S}) = \frac{N(N-1)}{2}$$
+- **Espacio binario de la red de 24 nodos ($4 \times 6$):**
+  $$T = (T_0, \dots, T_{23}) \in \{0,1\}^{24}, \qquad \rho(T) = \frac{1}{24}\sum_{a=0}^{23} T_a$$
+- **Regla de separación de regímenes:** Los resultados de actualización asíncrona secuencial (1 nodo por paso) **no** se extrapolan automáticamente a actualización síncrona, ni el ejemplo escalar auxiliar del Episodio 41 se toma como ley demostrada de la TRCG.
 
 ---
 
-## 3. Variaciones de $\tilde{V}(T)$ y Monotonía Asíncrona
+## 3. Auditoría Estructural y Espectral de $J_{24\times 24}$ (264 Triples de $R$)
 
-* **Actualización asíncrona (secuencial, 1 nodo por paso):** Condiciones de estabilidad no intercambiables directamente con la actualización síncrona.
-* **Expresiones de variación ($\Delta \tilde{V} = \tilde{V}(T') - \tilde{V}(T)$) para un cambio en el nodo $a$:**
-  * Transición $0 \to 1$ ($h_a(T) \ge \theta_{\text{on}}$): $\Delta \tilde{V}_{0\to 1}(T; a) = -h_a(T) + \Delta \Phi_a$.
-  * Transición $1 \to 0$ ($h_a(T) \le \theta_{\text{off}}$): $\Delta \tilde{V}_{1\to 0}(T; a) = h_a(T) - \Delta \Phi_a$.
-  * Sin cambio ($\Delta T_a = 0$): $\Delta \tilde{V} = 0$.
-* **Condiciones suficientes de monotonía ($\Delta \tilde{V} \le 0$):** Actualización secuencial (1 nodo/paso), simetría $J_{ac} = J_{ca}$, banda de histéresis no degenerada $\theta_{\text{off}} < \theta_{\text{on}}$ con $\theta_{\text{off}} \le \Delta\Phi_a \le \theta_{\text{on}}$, y acotación inferior de $\tilde{V}$ sobre el espacio finito $\{0,1\}^{24}$ (impidiendo ciclos infinitos y garantizando convergencia a estados retenidos).
-* **Modos transversales ($m=1,2,3$) bajo histéresis:** La saturación binaria $\{0,1\}$ y la banda $[\theta_{\text{off}}, \theta_{\text{on}}]$ mezclan energía entre modos y permiten sostener estados retenidos no uniformes ($m=1,3$ ligados a giros/desfases helicoidales y nodos contiguos; $m=2$ a alternancia opuesta / conexiones triángulo–cruz) sin romper la monotonía asíncrona de $\tilde{V}(T)$.
+- **Origen combinatorio:** Red de $N = 24$ nodos ($4$ sectores $\times 6$ nodos) derivada de la **2-sección de 264 triples** de $R$.
+- **Simetría ($J = J^\top$):** Error `0.00e+00`.
+- **Diagonal y traza:** Diagonal nula (`0.00`) y traza nula (`0.0`).
+- **Equivariancia $\mathbb{Z}_4$ y descomposición espectral:** Equivariancia $\mathbb{Z}_4$ verificada (`0.00`) con descomposición en cuatro bloques hermíticos de $6 \times 6$ ($\widehat{J}^{(0)}, \widehat{J}^{(1)}, \widehat{J}^{(2)}, \widehat{J}^{(3)}$) y reconstrucción exacta a precisión de máquina (`4.50e-14`).
 
 ---
 
-## 4. Estado del Protocolo N1–N4 y Candidatura de $\lambda(R)$
+## 4. Funcional $\tilde{V}(T)$, Histéresis y Coherencia Dinámica (Episodio 41 → 42)
 
-* **N1 (30 semillas, 24 nodos / 264 triples):** Última corrida con ocupación final `0.000`, residuo $\mathbb{Z}_4$ `0.0000`, $P_{\text{sel,estricta}} = 0.00$ y `30/30 saturated_or_empty` (colapso al estado vacío por ajuste de umbral/sesgo; pendiente calibración en régimen no vacío).
-* **N3 (perturbación no $\mathbb{Z}_4$-equivariante):** Error normalizado $E_{\text{eq}}$ lineal con $\epsilon \in \{0, 0.05, 0.10, 0.20\}$ (`0.000`, `0.0111`, `0.0222`, `0.0444`); pendiente complementar con `hamming_diff_frac` en régimen no vacío.
-* **N4 (relajación lineal auxiliar, 10 pasos):** Error inicial `12.2764`, error final `0.6913`, ratio `0.0563`, $\alpha$ implícito `0.2500` ($(1-0.25)^{10} \approx 0.05631$).
-* **Candidato $\lambda(R)$ (sujeto a revisión de 4º Factor):**
-  $$\lambda(R) = 1 - \frac{\|P_{\mathbb{Z}_4} R P_{\mathbb{Z}_4}^\top - R\|_F}{\|P_{\mathbb{Z}_4} R P_{\mathbb{Z}_4}^\top\|_F + \|R\|_F + \varepsilon}$$
-  formulado frente a los seis requisitos formales, reservando estrictamente el símbolo $\lambda$ al **4º Factor**.
+- **Campo local:**
+  $$h_a(T) = b_a + \sum_{c \neq a} J_{ac} T_c$$
+- **Banda de histéresis:** $\theta_{\text{off}} < \theta_{\text{on}}$ con $\theta_{\text{off}} \le \Delta\Phi_a \le \theta_{\text{on}}$ y $\Delta\Phi_a = \frac{1}{2}(\theta_{\text{off}} + \theta_{\text{on}})$.
+- **Variaciones en actualización asíncrona (1 nodo $a$ por paso):**
+  - Transición $0 \to 1$ ($h_a(T) \ge \theta_{\text{on}}$): $\Delta\tilde{V}_{0\to 1} = -h_a(T) + \Delta\Phi_a \le 0$.
+  - Transición $1 \to 0$ ($h_a(T) \le \theta_{\text{off}}$): $\Delta\tilde{V}_{1\to 0} = h_a(T) - \Delta\Phi_a \le 0$.
+  - Sin cambio ($0 \to 0$ o $1 \to 1$): $\Delta\tilde{V} = 0$.
+- **Alineación con los 6 criterios del Episodio 41:** (1) coherencia dimensional, (2) coherencia del espacio admisible, (3) existencia, (4) unicidad o multiplicidad, (5) estabilidad y (6) coherencia de cuencas/fronteras.
 
 ---
 
-## 5. Registro Dinámico $J_{24\times 24}$ (Régimen No Vacío) — [FECHA]
+## 5. Registro Dinámico $J_{24\times 24}$ (Barrido y Auditoría No Vacía) — 24 de noviembre de 2026
 
 - **Versión / Gobernanza:** `v1.7` · Nivel II retenido · Nivel III abierto (sin ascenso automático)
 - **Aislamiento de versión:** `v1.6` aislada (`Fugas v1.6: []`)
 - **Reserva de notación:** $\lambda$ reservado en exclusiva al **4º Factor**
-- **Núcleo y régimen:** $N = 24$ ($4 \times 6$), 264 triples de $R$ · Actualización asíncrona (1 nodo/paso) · Parámetros: $b_a = [\,]$, $\theta_{\text{off}} = [\,]$, $\theta_{\text{on}} = [\,]$, $\Delta\Phi_a = [\,]$, semillas = `30`.
+- **Núcleo y régimen:** $N = 24$ ($4 \times 6$), 264 triples de $R$ · Actualización asíncrona (1 nodo/paso) · $\Delta\Phi_a = \frac{1}{2}(\theta_{\text{off}} + \theta_{\text{on}}) \in [\theta_{\text{off}}, \theta_{\text{on}}]$ · Semillas = `100` por punto.
 
-### 5.1 Régimen no vacío y simetría (N1 calibrado)
-- **Ocupación final ($\rho_{\text{fin}}$):** media `[ ]` · rango `[mín, máx]` · fracción con $\rho_{\text{fin}} \in (0.05, 0.95)$: `[ ]`
-- **Residuo $\mathbb{Z}_4$ ($\Delta_{\mathbb{Z}_4}$) / $P_{\text{sel,estricta}}$:** `[ ]` / `[ ]`
-- **Etiquetas de régimen:** `saturated_or_empty`: `[ ]/30` · `near_z4_symmetric`: `[ ]/30` · `asymmetric_or_mixed`: `[ ]/30`
+### 5.1 Calibración inicial vs. barrido paramétrico en régimen no vacío (900 trayectorias)
+- **Calibración inicial ($b_a = -3.2$, banda $(1.0, 3.2)$):** `100/100` puntos fijos · `0/6624` violaciones $\Delta\tilde{V} \le 0$ · $\rho_{\text{med}} = 0.024$ (`0.06` en $(0.05, 0.95)$) · $|\mathcal{A}| = 7$ (`94/100` colapso al vacío).
+- **Barrido de recalibración ($b_a \in \{-2.4, -2.0, -1.6\}$, 3 bandas de histéresis, 100 semillas/punto):**
 
-### 5.2 Monotonía de $\tilde{V}(T)$ y convergencia
-- **Violaciones de $\Delta \tilde{V} \le 0$ (pasos secuenciales):** `[0 / total]`
-- **Regla de variación verificada:** `0 -> 1`: $\Delta\tilde{V} = -h_a(T) + \Delta\Phi_a \le 0$ · `1 -> 0`: $\Delta\tilde{V} = h_a(T) - \Delta\Phi_a \le 0$ · `0 -> 0` / `1 -> 1`: `0`
-- **Puntos fijos retenidos alcanzados:** `[n/30]` · **Ciclos abiertos:** `[n/30]`
+| $b_a$ | Banda $(\theta_{\text{off}}, \theta_{\text{on}})$ | Puntos fijos | Violaciones $\Delta\tilde{V} \le 0$ | $\rho_{\text{med}}$ | Fracción $(0.05, 0.95)$ | $|\mathcal{A}|$ | $m=0$ | $m=1+3$ | $m=2$ |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `-2.4` | `(1.0, 3.2)` | `100/100` | `0/6792` | `0.136` | `0.37` | `36` | `69.3 %` | `21.5 %` | `9.2 %` |
+| `-2.4` | `(0.5, 2.5)` | `100/100` | `0/5568` | `0.325` | `0.83` | `69` | `63.2 %` | `25.0 %` | `11.8 %` |
+| `-2.4` | `(0.8, 2.2)` | `100/100` | `0/5808` | `0.290` | `0.74` | `54` | `71.2 %` | `20.9 %` | `7.9 %` |
+| `-2.0` | `(1.0, 3.2)` | `100/100` | `0/5520` | `0.263` | `0.81` | `63` | `59.5 %` | `28.7 %` | `11.8 %` |
+| **`-2.0`** | **`(0.5, 2.5)`** | **`100/100`** | **`0/5568`** | **`0.450`** | **`0.93`** | **`88`** | **`66.5 %`** | **`22.2 %`** | **`11.3 %`** |
+| `-2.0` | `(0.8, 2.2)` | `100/100` | `0/5496` | `0.410` | `0.91` | `68` | `70.0 %` | `21.0 %` | `8.9 %` |
+| `-1.6` | `(1.0, 3.2)` | `100/100` | `0/5664` | `0.381` | `0.87` | `76` | `63.0 %` | `25.4 %` | `11.6 %` |
+| `-1.6` | `(0.5, 2.5)` | `100/100` | `0/6192` | `0.586` | `0
 
-### 5.3 Modos transversales $\mathbb{Z}_4$ ($m=1,2,3$) y retención en banda
-- **Energía modal en estados finales ($m=0$ vs. $m=1,2,3$):** $m=0$: `[ ]%` · $m=1,3$ (helicoidal / contiguos): `[ ]%` · $m=2$ (cuadrupolar / triángulo-cruz): `[ ]%`
-- **Margen mínimo a banda $[\theta_{\text{off}}, \theta_{\text{on}}]$:** `[ ]`
-- **Sensibilidad al orden asíncrono:** `[baja / media / alta — nota breve]`
-
-### 5.4 Lectura de estado (sin ascenso automático)
-- **Nivel II retenido:** `[consistencia dinámica y modal comprobada / pendiente ajuste de umbral]`
-- **Nivel III abierto:** Permanece abierto (no acredita emergencia espontánea desde bases no pre-codificadas ni valida formalmente $\lambda$).
