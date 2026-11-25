@@ -71,3 +71,29 @@
 | `-1.6` | `(1.0, 3.2)` | `100/100` | `0/5664` | `0.381` | `0.87` | `76` | `63.0 %` | `25.4 %` | `11.6 %` |
 | `-1.6` | `(0.5, 2.5)` | `100/100` | `0/6192` | `0.586` | `0
 
+## 6. Auditoría detallada del régimen calibrado \(b_a = -2.0\), banda \((0.5, 2.5)\) — 25 de noviembre de 2026
+
+**Parámetros**: \(b_a = -2.0\), \(\theta_{\rm off}=0.5\), \(\theta_{\rm on}=2.5\), \(\Delta\Phi_a=1.5\), 100 semillas, actualización asíncrona.
+
+### Resultados principales
+- Violaciones de \(\Delta\tilde{V}\le 0\): **0 / 5616** pasos.
+- Atractores distintos: **89**.
+- Distancia de Hamming entre atractores: mín = 1, media = **9.11**, máx = 21.
+
+### Top-5 estados retenidos
+| Rank | Frecuencia | \(\rho\) | \(m=0\) | \(m=1+3\) | \(m=2\) | Residuo \(\mathbb{Z}_4\) | Margen mín. |
+|------|------------|----------|---------|-----------|---------|--------------------------|-------------|
+| #1 | 6/100 | 0.000 | 0 % | 0 % | 0 % | 0.00 | 4.500 |
+| #2 | 2/100 | 0.583 | 89.3 % | 7.1 % | 3.6 % | 0.33 | 0.700 |
+| #3 | 2/100 | 0.167 | 50.0 % | 0 % | 50.0 % | 0.33 | 0.600 |
+| #4 | 2/100 | 0.208 | 45.0 % | 50.0 % | 5.0 % | 0.50 | 0.700 |
+| #5 | 2/100 | 0.083 | 25.0 % | 50.0 % | 25.0 % | 0.33 | 0.100 |
+
+### Sensibilidad a flips unitarios
+- Orden determinista: **61.33 %** de cambios de atractor (salto medio 2.35 bits).
+- Orden aleatorio: **92.83 %** de cambios de atractor (salto medio 4.61 bits).
+
+**Lectura**: multiplicidad real de estados retenidos bien diferenciados, presencia de modos transversales y cuencas sensibles a perturbaciones unitarias, manteniendo siempre monotonía de \(\tilde{V}\) y convergencia a puntos fijos.
+
+**Gobernanza**: Nivel II retenido · Nivel III abierto (sin ascenso automático) · v1.6 aislada · \(\lambda\) reservado al 4º Factor.
+```
