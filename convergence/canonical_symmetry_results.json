@@ -1,0 +1,77 @@
+{
+  "scope": "strata and declared rotation only; no full canonical automorphism claim",
+  "rotation_order": 4,
+  "composition_verified": true,
+  "cycle_lengths": [
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  ],
+  "binary_orbits": {
+    "1": 64,
+    "2": 2016,
+    "4": 4193280,
+    "total": 4195360
+  },
+  "strata_preserved": true,
+  "strata_only_group_order": 191102976,
+  "intersection_with_auxiliary_order": 2,
+  "edge_orbits_by_size": {
+    "2": 6,
+    "4": 66
+  },
+  "source": "DOCUMENTO_MAESTRO_PIRAMIDE_PARABOLA.md v1.2.0 sections 1,2,4.4; main branch, commit not pinned"
+}
