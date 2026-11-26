@@ -1,0 +1,110 @@
+{
+  "scope": "Auxiliary multiplicative model only",
+  "seed": 42,
+  "tolerance": 1e-12,
+  "numpy": "2.3.5",
+  "results": {
+    "T01_simplex": {
+      "status": "PASS",
+      "max_error": 4.440892098500626e-16,
+      "trials": 1000
+    },
+    "T03_mass": {
+      "status": "PASS",
+      "max_error": 1.6653345369377348e-16,
+      "trials": 1000
+    },
+    "T04_increment": {
+      "status": "PASS",
+      "max_error": 1.5265566588595902e-16,
+      "trials": 1000
+    },
+    "T05_ratio": {
+      "status": "PASS",
+      "max_error": 1.6653345369377348e-16,
+      "trials": 1000
+    },
+    "T16_rotation": {
+      "status": "PASS",
+      "max_error": 5.551115123125783e-17,
+      "trials": 1000
+    },
+    "T02_support": {
+      "status": "PASS",
+      "trials": 1000
+    },
+    "T06_accumulated": {
+      "status": "PASS",
+      "max_error": 3.3306690738754696e-16
+    },
+    "T07_concentration": {
+      "status": "PASS",
+      "final_mass": 0.9999999396266362
+    },
+    "T08_bound": {
+      "status": "PASS"
+    },
+    "T09_summable_advantage": {
+      "status": "PASS",
+      "final_mass": 0.3521874283517514,
+      "limit": 0.3521874283517515
+    },
+    "T10_geometry_counterexample": {
+      "status": "PASS",
+      "final_mass": 1.734723475976807e-19,
+      "geometric_ratio": 2,
+      "relational_ratio": 0.25
+    },
+    "T11_nonapical_face": {
+      "status": "PASS"
+    },
+    "T12_apical_face": {
+      "status": "PASS"
+    },
+    "T13_equilibria": {
+      "status": "PASS",
+      "vertices": 24
+    },
+    "T14_invasion": {
+      "status": "PASS",
+      "cases": {
+        "0.5": {
+          "multiplier": 0.5,
+          "finite_difference": 0.5000000250000012,
+          "basal_tangent_radius": 0.25,
+          "full_tangent_radius": 0.5
+        },
+        "2.0": {
+          "multiplier": 2.0,
+          "finite_difference": 1.9999998000000199,
+          "basal_tangent_radius": 0.25,
+          "full_tangent_radius": 2.0
+        }
+      }
+    },
+    "T15_transverse": {
+      "status": "PASS"
+    },
+    "T17_quotient_observable": {
+      "status": "PASS"
+    },
+    "T18_probability": {
+      "status": "PASS",
+      "probability": 0.3,
+      "mean_mass": 0.44285714285714284
+    },
+    "T19_null_architectures": {
+      "status": "NOT_RUN",
+      "reason": "Canonical architecture/operator data unavailable"
+    },
+    "T20_canonical_operator": {
+      "status": "NOT_RUN",
+      "reason": "Canonical architecture/operator data unavailable"
+    }
+  },
+  "counts": {
+    "PASS": 18,
+    "FAIL": 0,
+    "NOT_RUN": 2
+  }
+}
