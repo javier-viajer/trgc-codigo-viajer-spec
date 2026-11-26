@@ -1,0 +1,41 @@
+{
+  "version": "0.1.0",
+  "status": "formula_audit_only",
+  "upstream_commit": null,
+  "seed": 20261125,
+  "tolerance": 1e-10,
+  "comparisons": 480,
+  "height_convention": "z/H = j*ratio, j=0..5, illustrative",
+  "ratios": [
+    0.01,
+    0.05,
+    0.1,
+    0.15
+  ],
+  "gamma": [
+    0.8,
+    1.0909090909090908,
+    1.2,
+    2,
+    3
+  ],
+  "mu": [
+    0,
+    0.2,
+    1
+  ],
+  "samples_per_combination": 8,
+  "numpy_version": "2.3.5",
+  "max_errors": {
+    "correspondence": 4.713836977319603e-16,
+    "rotation": 5.212396988988865e-15,
+    "stratified": 6.2377544663823415e-15,
+    "mass": 4.440892098500626e-16
+  },
+  "negative_control_min": 0.0002989683238217401,
+  "passed": true,
+  "episode_44_modified": false,
+  "level_II": "retained",
+  "level_III": "open",
+  "lambda_status": "reserved_fourth_factor"
+}
