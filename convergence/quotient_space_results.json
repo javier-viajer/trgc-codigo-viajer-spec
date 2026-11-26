@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "scope": "single-edge family; independent formula; unit edge mass; illustrative distinct weights",
+  "seed": 20261126,
+  "tolerance": 1e-10,
+  "numpy_version": "2.3.5",
+  "weights": [
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0
+  ],
+  "edge_count": 276,
+  "orbit_counts": {
+    "S24": 1,
+    "Z4": 72,
+    "Z2": 144,
+    "stratified": 21
+  },
+  "orbit_sizes": {
+    "S24": {
+      "276": 1
+    },
+    "Z4": {
+      "2": 6,
+      "4": 66
+    },
+    "Z2": {
+      "1": 12,
+      "2": 132
+    },
+    "stratified": {
+      "6": 6,
+      "16": 15
+    }
+  },
+  "burnside_fixed_edges_Z4": [
+    276,
+    0,
+    12,
+    0
+  ],
+  "apical_edges": {
+    "0": 190,
+    "1": 80,
+    "2": 6
+  },
+  "apical_classes": {
+    "Z4": {
+      "0": 50,
+      "1": 20,
+      "2": 2
+    },
+    "Z2": {
+      "0": 100,
+      "1": 40,
+      "2": 4
+    },
+    "stratified": {
+      "0": 15,
+      "1": 5,
+      "2": 1
+    }
+  },
+  "quotient_metric": {
+    "S24": {
+      "checks": 276,
+      "distinct_class_distance": null
+    },
+    "Z4": {
+      "checks": 19872,
+      "distinct_class_distance": 1.4142135623730951
+    },
+    "Z2": {
+      "checks": 39744,
+      "distinct_class_distance": 1.4142135623730951
+    },
+    "stratified": {
+      "checks": 5796,
+      "distinct_class_distance": 1.4142135623730951
+    }
+  },
+  "spectral_error_max": 0.0,
+  "fixed_error_max": 0.0,
+  "signature_count": 21,
+  "reconstruction_error_max": 0.0,
+  "negative_controls": {
+    "repeated_weights": "PASS",
+    "rotation_collision": "PASS",
+    "invalid_pairs": "PASS",
+    "broken_weight_error_min": 0.01987373874308273
+  },
+  "equivariance_samples": 32,
+  "equivariance_error_max": {
+    "Z4": 5.833621695133746e-16,
+    "Z2": 4.479802846451583e-16,
+    "stratified": 5.812833951539927e-16
+  },
+  "mass_error_max": 3.3306690738754696e-16,
+  "fixed_class_distance_ratio_analytic": {
+    "Z4": 1.0,
+    "Z2": 1.0,
+    "stratified": 1.0
+  },
+  "canonical_certification": false,
+  "episode_44_modified": false,
+  "limitations": [
+    "No general stratified metric solver for dense matrices",
+    "No basin estimates",
+    "No canonical upstream commit verified",
+    "No hybrid or 44A/44B tests"
+  ],
+  "governance": "Level II retained; Level III open; lambda reserved for fourth factor"
+}
