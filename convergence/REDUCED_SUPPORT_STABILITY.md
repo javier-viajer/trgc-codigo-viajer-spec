@@ -1,0 +1,21 @@
+Reduced-support stability / Estabilidad de soporte reducido
+Version 0.1 — resultado analítico condicionado y auditoría independiente.
+Dominio y alcance
+N=24, matrices reales simétricas no negativas, diagonal nula, masa C>0 definida por la suma de aristas i<j. Se estudia Phi(R)=(1-mu)R+mu N(M(R)), con M_ij=(g_i g_j v_i v_j)^gamma para i!=j, diagonal cero, N normalización a C, v autovector unitario no negativo del mayor autovalor algebraico. Pesos positivos finitos, gamma>0, 0<mu<=1. Se admite la frontera localmente donde el mayor autovalor es simple. No se certifica el código canónico ni el sistema híbrido.
+Existencia
+Para cada arista ab, R*=C(e_a e_b^T+e_b e_a^T). Su espectro es C,-C y 22 ceros. El autovector dominante es (e_a+e_b)/sqrt(2). M solo tiene esa arista positiva; la normalización devuelve R*. Existen 276 puntos fijos distintos.
+Régimen gamma>1
+Por simplicidad del autovalor, v(R*+E)=v*+O(||E||). Los componentes exteriores son O(||E||). Las aristas cruzadas de M son O(||E||^gamma), y las exteriores O(||E||^(2gamma)). El denominador de normalización permanece positivo y acotado lejos de cero. Por masa fija, la variación de la arista ab normalizada es también O(||E||^gamma).
+Phi(R*+E)-R*=(1-mu)E+O(||E||^gamma).
+La derivada relativa al dominio admisible es la restricción de (1-mu)I al espacio tangente de masa fija (dimensión 275). El radio espectral es 1-mu<1. El resto permite elegir una vecindad con factor de contracción estrictamente inferior a uno; por inducción permanece invariante y converge. Para mu=1 la cota local es de orden gamma. La vecindad contiene matrices estrictamente positivas, de modo que los 276 atractores de frontera son accesibles asintóticamente desde el interior. Esto no afirma que sean los únicos atractores.
+Régimen gamma=1
+Para k exterior, delta v_k=(E_ak+E_bk)/(sqrt(2) C). En coordenadas de aristas exteriores, la derivada de la parte normalizada sobre el par ak,bk es el bloque de rango uno con columnas idénticas (g_k/g_b,g_k/g_a)^T. Las aristas entre nodos exteriores tienen derivada cero. La coordenada ab se determina por masa fija. Los autovalores de Phi son 1-mu (multiplicidad 253) y 1-mu+mu beta_k (22 valores), con beta_k=g_k(1/g_a+1/g_b). Si todos beta_k<1 hay estabilidad local asintótica. Si alguno supera uno hay inestabilidad: en la cara de tres nodos abk, la masa s exterior satisface s'= (1-mu+mu beta_k)s+O(s^2), uniformemente en la distribución de s. Si el máximo es uno, el criterio lineal no decide en general.
+Con seis estratos de cuatro nodos de igual peso por estrato, existe un nodo exterior de peso máximo y beta_k>=2. Por ello todos los 276 equilibrios son inestables.
+Régimen 0<gamma<1
+En la cara abk, con masa exterior s>0 pequeña, v_k es comparable a s y v_a,v_b permanecen acotados lejos de cero. La normalización produce masa exterior comparable a s^gamma. Existe c>0 tal que s'>=(1-mu)s+mu c s^gamma. Para s suficientemente pequeño, s'>=q s con q>1. Toda perturbación positiva en esa cara suficientemente pequeña acaba saliendo de una vecindad fija. Inestabilidad relativa al dominio ampliado.
+Consecuencias
+Para mu=0 la aplicación es identidad: estabilidad neutra, sin atracción. Para mu>0 y pesos estratificados: gamma<=1 implica inestabilidad y gamma>1 estabilidad asintótica local. Si hay cuatro nodos apicales, 6 aristas tienen dos, 80 uno y 190 ninguno. Para gamma>1 todas son atractoras locales. No existe convergencia universal al ápice para esta fórmula en el dominio indicado. No se infieren tamaños de cuenca ni equivalencia con TRCG. El umbral isotrópico de otro equilibrio no interviene en esta prueba.
+Reproducción
+Ejecutar python reduced_support_stability_audit.py con NumPy. Se genera el JSON adjunto. Alturas ilustrativas z/H=0,0.1,...,0.5 repetidas en cuatro sectores; masa unitaria; epsilon=1e-8. Se comprueban 276 aristas por combinación de cuatro gamma y dos mu. La auditoría usa una dirección de invasión por arista y una trayectoria interior de 12 pasos para gamma>1; no calcula el jacobiano completo ni estima cuencas. Las pruebas numéricas complementan, no sustituyen, la demostración.
+Gobernanza
+Nivel II retenido; Nivel III abierto; lambda reservado al 4º Factor; v1.6 y v1.7 aisladas; campaña experimental 44 congelada. Sin reescalados post hoc ni ascenso automático. Pendiente verificar versión y dominio canónicos exactos.
