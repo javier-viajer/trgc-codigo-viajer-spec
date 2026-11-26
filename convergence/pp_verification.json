@@ -1,0 +1,167 @@
+{
+  "status": "PASS",
+  "scope": "partial four-layer model, fixed strata",
+  "group_orders": [
+    48,
+    48,
+    48,
+    4,
+    2
+  ],
+  "rotations": [
+    {
+      "degrees": 0,
+      "all_four_layers": true,
+      "strata": true,
+      "stratified_weights_invariant": true
+    },
+    {
+      "degrees": 90,
+      "all_four_layers": false,
+      "strata": true,
+      "stratified_weights_invariant": true
+    },
+    {
+      "degrees": 180,
+      "all_four_layers": true,
+      "strata": true,
+      "stratified_weights_invariant": true
+    },
+    {
+      "degrees": 270,
+      "all_four_layers": false,
+      "strata": true,
+      "stratified_weights_invariant": true
+    }
+  ],
+  "gram": [
+    [
+      48,
+      0,
+      0,
+      4
+    ],
+    [
+      0,
+      48,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      48,
+      0
+    ],
+    [
+      4,
+      0,
+      0,
+      24
+    ]
+  ],
+  "gram_determinant": 2617344,
+  "gram_rank": 4,
+  "spectral_max_errors": [
+    8.881784197001252e-16,
+    1.3322676295501878e-15,
+    1.6354230828204163e-15,
+    0.0
+  ],
+  "orbits_klein": [
+    [
+      0,
+      11,
+      12,
+      23
+    ],
+    [
+      1,
+      10,
+      13,
+      22
+    ],
+    [
+      2,
+      9,
+      14,
+      21
+    ],
+    [
+      3,
+      8,
+      15,
+      20
+    ],
+    [
+      4,
+      7,
+      16,
+      19
+    ],
+    [
+      5,
+      6,
+      17,
+      18
+    ]
+  ],
+  "orbits_stratified": [
+    [
+      0,
+      12
+    ],
+    [
+      1,
+      13
+    ],
+    [
+      2,
+      14
+    ],
+    [
+      3,
+      15
+    ],
+    [
+      4,
+      16
+    ],
+    [
+      5,
+      17
+    ],
+    [
+      6,
+      18
+    ],
+    [
+      7,
+      19
+    ],
+    [
+      8,
+      20
+    ],
+    [
+      9,
+      21
+    ],
+    [
+      10,
+      22
+    ],
+    [
+      11,
+      23
+    ]
+  ],
+  "binary_orbits_klein": 4197376,
+  "binary_orbits_stratified": 8390656,
+  "canonical_trials": 100,
+  "seed": 42,
+  "canonical_full_architecture": "NOT VERIFIED",
+  "hybrid_equivariance": "NOT TESTED",
+  "44A_44B": "NOT TESTED",
+  "governance": "Level II retained; Level III open; lambda reserved for fourth factor"
+}
