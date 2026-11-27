@@ -1726,6 +1726,308 @@ Only demonstrations can establish equivalence.
 
 ---
 
+## 26. Canonical Computational Reproducibility
+
+### 26.1. Purpose
+
+The canonical stability and equivariant bifurcation campaigns have been subjected to a reported same-algorithm computational reproduction.
+
+The objective is to verify numerical consistency while preserving the published mathematical definitions, campaign parameters and acceptance tolerances.
+
+This verification does not constitute exhaustive mathematical certification or validation through an alternative algorithm.
+
+### 26.2. Audited Repository Reference
+
+Repository:
+
+https://github.com/javier-viajer/trgc-codigo-viajer-spec
+
+Audited commit:
+
+6d8a99c74f45a6518cd892d6b633ca8362e853df
+
+The published audit programs are identified by their Git blob hashes:
+
+| Program | Git blob SHA |
+|---|---|
+| canonical_stability_audit.py | c1e9e2a4aaeea1ff4652d886ce55124abe9065c6 |
+| canonical_bifurcation_audit.py | 02d67cdb40638d5504457dfd5a63a880a34aff12 |
+
+The retained local source files match these repository identifiers.
+
+### 26.3. Computational Environment
+
+The reported reproduction environment is:
+
+- Python 3.13.5.
+- NumPy 2.3.5.
+- SciPy 1.17.0.
+
+Cross-platform byte-level reproducibility has not been established.
+
+### 26.4. Stability Reproduction
+
+| Quantity | Expected | Observed |
+|---|---:|---:|
+| Parameter-composition cases | 728 | 728 |
+| Located equilibria | 3278 | 3278 |
+| Stable equilibria | 145 | 145 |
+| Unstable equilibria | 3133 | 3133 |
+
+Maximum matrix equilibrium residual:
+
+$$
+r_{\mathrm{max}}
+=
+4.718447854656915\times10^{-14}.
+$$
+
+The retained numerical artifacts reproduce the reported aggregate classification.
+
+### 26.5. Critical Curve Reproduction
+
+| Critical family | Expected | Observed |
+|---|---:|---:|
+| Fold candidates | 1120 | 1120 |
+| Simple subcritical candidates | 578 | 578 |
+| Heterogeneous multiple candidates | 180 | 180 |
+| Homogeneous multiple points | 144 | 144 |
+| Located critical points | 2022 | 2022 |
+| Missing critical points | 162 | 162 |
+| Total examined cases | 2184 | 2184 |
+
+Maximum critical equation residual:
+
+$$
+r_{\mathrm{critical}}
+=
+9.715907189900008\times10^{-9}.
+$$
+
+The critical classifications remain numerical and local.
+
+Missing roots remain unresolved cases.
+
+### 26.6. Multiple-Point Reproduction
+
+All 180 heterogeneous multiple candidates in the retained numerical artifact satisfy the implemented numerical hypothesis checks for the corresponding S3 normal form.
+
+Maximum refinement residual:
+
+$$
+r_{\mathrm{multiple}}
+=
+5.204170427930421\times10^{-16}.
+$$
+
+This result does not constitute interval-certified verification of every candidate.
+
+### 26.7. Complete Artifact Integrity
+
+The complete regenerated bifurcation artifact contains 2874010 bytes.
+
+Its SHA-256 identifier is:
+
+```text
+607b6f246d18529fe847d112fdb063b9bca975e488385e595c745971db91386f
+```
+
+The original complete artifact and the regenerated artifact have matching SHA-256 identifiers.
+
+The intermediate stability artifact contains 623610 bytes.
+
+Its SHA-256 identifier is:
+
+```text
+7e399f265e2972f79ba818517fd2b9eea56b1038daa92eb7bab1dec1c379266d
+```
+
+The intermediate stability records also match the stability records embedded in the complete bifurcation artifact.
+
+### 26.8. Summary and Complete Artifact Distinction
+
+The repository file:
+
+canonical_bifurcation_results.json
+
+contains a consolidated summary.
+
+It does not contain the complete individual numerical records.
+
+Consequently, the SHA-256 identifier of the complete artifact must not be applied to the repository summary.
+
+Complete numerical artifacts should be preserved separately and regenerated when required.
+
+### 26.9. Reproduction Procedure
+
+From the convergence directory:
+
+```bash
+python canonical_stability_audit.py
+```
+
+Then:
+
+```bash
+python canonical_bifurcation_audit.py \
+  --stability-input canonical_stability_results.json \
+  --output canonical_bifurcation_results_full.json
+```
+
+The explicit output argument preserves the repository summary.
+
+For a complete reproduction from scratch, no previously generated critical-input file should be supplied.
+
+### 26.10. New Reproducibility Documents
+
+This research phase introduces:
+
+- `CANONICAL_REPRODUCIBILITY.md`: formal documentation of the reported computational reproduction, audited source identifiers, artifact hashes, numerical controls and scientific limitations.
+
+- `canonical_reproducibility_results.json`: compact machine-readable record of the reproduction results and verification status.
+
+These documents complement the canonical stability and bifurcation files introduced in Section 25.
+
+### 26.11. Updated Verification Status
+
+The computational reproduction reported in this section updates the pending same-algorithm reproduction status recorded in Section 25.
+
+| Verification component | Status |
+|---|---|
+| Same-algorithm computational reproduction | Reported successful |
+| Source file integrity | Verified |
+| Complete artifact hash agreement | Verified |
+| Stability aggregate counts | Verified |
+| Critical aggregate counts | Verified |
+| Cubic classification counts | Verified |
+| Multiple-point numerical checks | Verified from retained records |
+| Numerical residual checks | Verified |
+| Independent alternative algorithm | Pending |
+| Cross-platform reproducibility | Pending |
+| Exhaustive root certification | Pending |
+| Global branch continuation | Pending |
+| Global basin classification | Pending |
+| Hybrid operator validation | Not tested |
+| TRGC equivalence | Not established |
+
+### 26.12. Scientific Interpretation
+
+Computational reproducibility strengthens the numerical evidence supporting the canonical stability and bifurcation research program.
+
+However:
+
+- Reproducibility does not imply exhaustive classification.
+- Identical numerical outputs do not exclude shared algorithmic errors.
+- Numerical agreement does not replace mathematical demonstration.
+- Local stability does not determine global attraction basins.
+- Symmetry breaking does not guarantee the emergence of stable configurations.
+
+The distinction between analytical results, numerical evidence and unresolved research objectives remains mandatory.
+
+### 26.13. Next Research Phase
+
+The next objectives are:
+
+1. Independent equilibrium search algorithms.
+2. Independent Jacobian and spectral verification.
+3. Pseudo-arclength continuation of equilibrium branches.
+4. Detection of additional critical branches.
+5. Interval-certified equilibrium searches.
+6. Global attraction basin classification.
+7. Basin correspondence under admissible symmetry groups.
+8. Independent TRGC operator correspondence.
+
+The transition toward global basin analysis must preserve the established local stability and bifurcation results without assuming exhaustive root coverage.
+
+### 26.14. Governance
+
+The established governance framework remains unchanged:
+
+- Level II retained.
+- Level III open.
+- No automatic promotion.
+- Lambda reserved exclusively for the Fourth Factor.
+- Versions v1.6 and v1.7 remain isolated.
+- No post hoc rescaling.
+- Episode 44 remains frozen.
+- No automatic hybrid operator validation.
+- No automatic equivalence between TRGC and Codigo Viajer.
+
+Computational reproducibility strengthens the evidence.
+
+Correspondence opens the research path.
+
+Only demonstrations can establish equivalence.
+
+---
+
+27. Canonical Lyapunov Function and Global Relational Convergence
+27.1. Scope
+The fixed-parameter canonical relational operator on the nonnegative symmetric zero-diagonal fixed-mass simplex is studied for positive weights, gamma>0 and 0<mu<=1. No operator modification is introduced. Multiple Perron eigenvalues are handled through the correspondence of all admissible nonnegative unit Perron selections.
+27.2. Weighted Lyapunov theorem
+$$\mathcal L_{\gamma,g}(R)=\frac{\rho(R)}{\left(\sum_{i<j}R_{ij}^{1+1/\gamma}/(g_i g_j)\right)^{\gamma/(\gamma+1)}}.$$
+Rayleigh and weighted Holder inequalities prove strict increase at every nonstationary update, for every admissible Perron selection. The function is invariant under weight-preserving permutations.
+27.3. Finiteness and global convergence
+The exact scalar fixed-point reduction, analytic inverse branches and endpoint analysis prove finiteness for every fixed admissible parameter set. For gamma<1 there is one equilibrium per support of size at least two (16,777,191 for N=24); for gamma=1 at most one per support. The count for gamma>1 is not determined. Compactness of the Perron-pair graph and strict Lyapunov increase imply stationary accumulation points and vanishing step sizes. Finiteness then proves convergence of every trajectory to a single equilibrium, not necessarily the same equilibrium for different initial states. No global strict contraction or universal apical selection follows.
+27.4. Homogeneous three-node simplex
+Gamma regime
+Fixed points
+Asymptotically stable points
+Basin classification
+0<gamma<=1
+4
+1
+Complete
+1<gamma<3
+7
+4
+Destinations and median thresholds; global separatrix geometry pending
+gamma=3
+4
+3
+Complete
+gamma>3
+7
+3
+Complete
+At gamma=3 the top-gap factor is 1-4 mu c+O(||r-U||^2), where c is the smallest coordinate deviation. Unique maxima converge to the corresponding edge vertex; tied maxima converge to U. For gamma>3 the tied-maximum segments instead converge to saddles, except U itself. In the coexistence regime the three saddle stable sets contain all attracting-basin boundaries collectively; global regularity and exact shared-boundary equality remain pending.
+27.5. Numerical audit
+Control
+Result
+Sampled canonical updates
+1440
+Decreases below -1e-12
+0
+Minimum sampled increment
+1.1467007343668456e-9
+Multiple-Perron selections (homogeneous weights)
+44
+Minimum multiple-Perron increment
+0.04831863081163845
+Reverse-direction negative control
+-0.0014922493410753912
+Critical coefficient samples
+9
+Saddle examples
+7
+Maximum saddle fixed-point residual
+8.798517470154366e-15
+Seed 49. Python 3.13.5, NumPy 2.3.5, SciPy 1.17.0. The portable script was rerun and its JSON matched the retained original byte for byte. The only script change was the output path (relative to the script). These controls are not exhaustive or an alternative-algorithm validation.
+27.6. Files and reproduction
+HOMOGENEOUS_SIMPLEX_BASINS.md
+CANONICAL_LYAPUNOV_FUNCTION.md
+GLOBAL_RELATIONAL_CONVERGENCE.md
+canonical_lyapunov_audit.py
+canonical_lyapunov_results.json
+Run from convergence:
+python canonical_lyapunov_audit.py
+This regenerates the results JSON beside the script. It contains parameter-block aggregates and individual critical, saddle and multiple-Perron controls, not all random initial states.
+27.7. Quotient and next objectives
+The Lyapunov function descends under weight-preserving permutations. Heteroclinic connections between distinct equilibria must respect strict Lyapunov ordering; directed cycles are excluded. Actual connection existence and basin adjacency remain to be established. Next objectives: global coexistence separatrices, heterogeneous basin classification, independent numerical methods, and explicit connection graphs. No hybrid or TRGC equivalence claim.
+27.8. Governance
+Level II retained. Level III open. No automatic promotion. Lambda reserved for the Fourth Factor. v1.6 and v1.7 isolated. No post hoc rescaling. Episode 44 frozen.
+
+
 
 TRCG — CÓDIGO VIAJER — PIRÁMIDE-PARÁBOLA
 
