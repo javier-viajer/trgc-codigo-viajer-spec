@@ -1,0 +1,30 @@
+Homogeneous simplex basins
+Version: 1.0.0 | Date: 2026-11-27
+Scope
+Three equal-weight nodes, positive fixed undirected mass (set to one by choice of units), fixed gamma > 0 and 0 < mu <= 1. Write r=(x,y,z)=(R12,R13,R23), x+y+z=1. H is the mass-normalized off-diagonal product (vi vj)^gamma of a nonnegative unit Perron vector; F=(1-mu)r+mu H. The largest algebraic eigenvalue is simple throughout this simplex: every nonzero support is connected on its active nodes. The map is continuous. All boundaries below are relative to the simplex.
+Order and symmetry
+The Perron equations give (rho+z)(v2-v3)=(x-y)v1. In the interior, x>y iff v2>v3, and hence iff H12>H13. Cyclic permutations give all comparisons. The same strict order preservation holds on two-edge supports by positivity of the active Perron vector, and vertices are fixed. Equality lines and all six order chambers are invariant forward. The S3 action permutes the edge coordinates.
+Exhaustive fixed points
+The vertices E1,E2,E3 and U=(1/3,1/3,1/3) are always fixed. Two-edge supports cannot be fixed because H fills the missing edge. By the scalar reduction in GLOBAL_RELATIONAL_CONVERGENCE.md, equal weights imply at most two distinct active p values (one for gamma<=1). Thus any nonuniform interior fixed point has two equal edges. Write r=(a,b,b), a+2b=1, v=(u,u,tu). The Perron equations give a/b=(2-t^2)/t; stationarity gives a/b=t^(-gamma). Hence
+$$t^2+t^{1-\gamma}=2,\qquad 0<t<\sqrt2.$$
+For gamma<=1 the left side is strictly increasing. For gamma>1 it is strictly convex, tends to infinity at zero, exceeds 2 at sqrt(2), and has derivative 3-gamma at t=1. There is exactly one additional root t*<1 for 1<gamma<3, none at gamma=3, and exactly one t*>1 for gamma>3. Each additional root generates three points S_i with a=1/(1+2t*^gamma).
+Stability
+At U both tangent multipliers are 1-mu+mu gamma/3. At a vertex, for gamma>1, H(r)-E=O(||r-E||^gamma), giving local asymptotic stability. For gamma<=1, write s as the sum of the two small edges near a vertex. The exterior Perron component is s/sqrt(2)+O(s^2); H has exterior mass 2 s^gamma(1+o(1)). Thus s' > s sufficiently near the vertex for s>0, excluding convergence from any nonvertex and proving instability.
+At a nonuniform equilibrium the longitudinal and transverse multipliers are 1-mu+mu beta, with
+$$\beta_L=\gamma(2-t^2)/(2+t^2),\qquad \beta_T=\gamma t^2/(4-t^2).$$
+The first follows by differentiating a/b=(2-t^2)/t and H_a/H_b=t^(-gamma); the second follows from (rho+a)(v1-v2)=(y-z)v3. At a root, the sign of 1-beta_L is the sign of t times the derivative of t^2+t^(1-gamma)-2, since tL'(t)=2t^2+(1-gamma)(2-t^2). Convexity gives beta_L>1 for t<1 and beta_L<1 for t>1. The transverse formula gives beta_T<1 for t<1,gamma<3 and beta_T>1 for t>1,gamma>3. Both beta values are positive. Hence all three nonuniform equilibria are hyperbolic saddles.
+Global convergence and basin classification
+The strict Lyapunov theorem and finite equilibrium argument in the companion documents imply convergence of every trajectory to a single fixed point.
+0<gamma<=1: B(U) is the entire simplex except the three fixed vertices, by the vertex invasion estimate above.
+1<gamma<3: four open attracting basins B(U), B(E_i) and three disjoint stable sets W^s(S_i) partition the simplex. A unique maximum i can only converge to U,E_i,S_i; a tied maximum converges to U by order preservation. On the median toward E_i the threshold is a*=1/(1+2t*^gamma): below it (a>=1/3) the limit is U, above it E_i, and at it S_i. This follows from the sign of H_a-a and monotonicity of the scalar median map (t decreases with a). The stable manifold theorem gives a smooth local stable curve at S_i, with the unstable median branches leading to U and E_i. Thus S_i lies on their shared boundary. The full stable set is the union of all iterated preimages of a sufficiently small local stable manifold. The union of the three stable sets is compact and contains every attracting-basin boundary. Global regularity, connectivity and equality of each full stable set with the corresponding shared boundary remain unproved; no global openness or injectivity is assumed.
+gamma>3: U is a repeller, and S_i has two equal maximal edges. The transverse multiplier exceeds one. The exact difference factor is continuous near S_i and exceeds one there, excluding convergence from a strict inequality between the two maximal edges. Thus B(E_i) is exactly the region of unique maximum i. Each tied-maximum segment excluding U converges to its saddle (by order and repulsion of U). Pairwise shared boundaries are the straight segments of tied maxima.
+Critical gamma=3
+Write r=U+(a,b,c), a+b+c=0. The unit Perron vector is (1-c,1-b,1-a)/sqrt(3)+O(||r-U||^2); rho=2/3+O(||r-U||^2). For x!=y, the exact identity gives
+$$(H_x-H_y)/(x-y)=v_1^4(v_2^2+v_2v_3+v_3^2)/[(\rho+z)Z],$$
+where Z=sum (vi vj)^3. Expanding, the numerator has relative linear term -3c, the denominator +c (Z has no linear term). Therefore
+$$(x'-y')/(x-y)=1-4\mu c+O(||r-U||^2).$$
+If x>y>=z then c<0 and ||r-U||<=sqrt(6)|c|. Near U the positive linear term dominates the remainder, so a strictly positive top gap cannot tend to zero. Every unique-maximum state therefore converges to its corresponding vertex. Every tied-maximum state converges to U by order preservation and the exhaustive fixed-point list. The stable set of U is the union of the three tied-maximum segments, of area zero. U is not Lyapunov stable on the full simplex.
+Quotient and scope
+Under S3 the three vertices form one class and the three saddles one class. In the coexistence regime two attracting classes remain; in the other regimes one remains. A boundary between equivalent vertex attractors need not separate distinct attracting classes after quotienting. The quotient here is the local homogeneous S3 quotient, not an identification of the full canonical rotational group.
+Governance
+Level II retained; Level III open; no automatic promotion; lambda reserved for the Fourth Factor; v1.6/v1.7 isolated; no post hoc rescaling; Episode 44 frozen. No hybrid or TRGC equivalence claim.
