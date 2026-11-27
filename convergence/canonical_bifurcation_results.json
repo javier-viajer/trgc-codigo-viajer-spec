@@ -1,0 +1,423 @@
+{
+  "document": "CANONICAL_BIFURCATION_RESULTS",
+  "version": "1.0.0",
+  "project": "TRGC-Codigo-Viajer-Spec",
+  "model": "Pyramid-Parabola",
+  "directory": "convergence",
+  "record_type": "consolidated_summary",
+  "language": "en",
+  "scope": {
+    "operator": "Canonical relational operator",
+    "nodes": 24,
+    "strata": 6,
+    "nodes_per_stratum": 4,
+    "support_sizes": [3, 4],
+    "individual_records_included": false,
+    "exhaustive_root_certification": false,
+    "global_continuation_completed": false,
+    "global_basin_classification_completed": false
+  },
+  "geometry": {
+    "parameter": "epsilon",
+    "definition": "h0/H",
+    "admissible_interval": {
+      "lower": 0,
+      "upper": 0.16666666666666666,
+      "lower_inclusive": false,
+      "upper_inclusive": false
+    },
+    "canonical_weight": "g_j = (1 - j*epsilon)^(-1/2)",
+    "stratum_indices": [1, 2, 3, 4, 5, 6]
+  },
+  "operator": {
+    "definition": "Phi(R) = (1-mu)*R + mu*N(M(R))",
+    "off_diagonal_kernel": "M_ij = (g_i*v_i*g_j*v_j)^gamma",
+    "diagonal": 0,
+    "perron_vector_normalization": "L2",
+    "mass_normalization": "Fixed undirected relational mass",
+    "campaign_mu": 0.2,
+    "campaign_mass": 1.0
+  },
+  "equilibrium_reduction": {
+    "alpha": "(gamma-1)/(gamma+1)",
+    "scalar_equation": "g_i^(2*gamma/(gamma+1))*p_i^alpha*(1-p_i) = K",
+    "constraints": [
+      "p_i > 0",
+      "sum(p_i) = 1"
+    ],
+    "critical_component": "(gamma-1)/(2*gamma)",
+    "reconstruction": {
+      "b_i": "sqrt(p_i/(1-p_i))",
+      "R_ij": "C0*b_i*b_j/sum_{k<l}(b_k*b_l)"
+    }
+  },
+  "spectral_stability": {
+    "auxiliary_matrix": "A = b*b^T - diag(b_i^2)",
+    "dominant_eigenvalue": 1,
+    "internal_mode": "beta_k = gamma*(1+ell_k)/(1-ell_k)",
+    "dynamic_mode": "eta_k = 1-mu+mu*beta_k",
+    "stable_condition": "ell_2 < -alpha",
+    "unstable_condition": "ell_2 > -alpha",
+    "critical_condition": "ell_2 = -alpha",
+    "critical_equality_requires_nonlinear_analysis": true,
+    "external_mode_for_gamma_greater_than_one": "1-mu"
+  },
+  "composition_inventory": {
+    "triangular_compositions": 56,
+    "four_node_compositions": 126,
+    "total_compositions": 182,
+    "composition_coverage": 1.0
+  },
+  "stability_campaign": {
+    "status": "sampled_numerical_evidence",
+    "epsilon_values": [0.05, 0.15],
+    "gamma_values": [1.5, 2.5],
+    "mu": 0.2,
+    "mass": 1.0,
+    "total_cases": 728,
+    "located_equilibria": 3278,
+    "stable_equilibria": 145,
+    "unstable_equilibria": 3133,
+    "triangular_results": [
+      {
+        "epsilon": 0.05,
+        "gamma": 1.5,
+        "stable": 56,
+        "unstable": 168
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": 2.5,
+        "stable": 6,
+        "unstable": 118
+      },
+      {
+        "epsilon": 0.15,
+        "gamma": 1.5,
+        "stable": 20,
+        "unstable": 132
+      },
+      {
+        "epsilon": 0.15,
+        "gamma": 2.5,
+        "stable": 6,
+        "unstable": 118
+      }
+    ],
+    "four_node_results": [
+      {
+        "epsilon": 0.05,
+        "gamma": 1.5,
+        "stable": 46,
+        "unstable": 1150
+      },
+      {
+        "epsilon": 0.05,
+        "gamma": 2.5,
+        "stable": 0,
+        "unstable": 422
+      },
+      {
+        "epsilon": 0.15,
+        "gamma": 1.5,
+        "stable": 11,
+        "unstable": 605
+      },
+      {
+        "epsilon": 0.15,
+        "gamma": 2.5,
+        "stable": 0,
+        "unstable": 420
+      }
+    ],
+    "interpretation": [
+      "Increasing geometric heterogeneity can reduce collective stability.",
+      "Increasing gamma can destabilize higher-support equilibria.",
+      "Missing numerical roots do not establish mathematical nonexistence.",
+      "Accumulated equilibrium counts are not simultaneous attractor counts."
+    ]
+  },
+  "critical_curve_campaign": {
+    "status": "sampled_critical_locus",
+    "epsilon_grid": {
+      "type": "linear",
+      "minimum": 0.001,
+      "maximum": 0.165,
+      "samples": 12
+    },
+    "total_compositions": 182,
+    "total_cases": 2184,
+    "located_critical_points": 2022,
+    "missing_critical_points": 162,
+    "critical_root_acceptance_tolerance": 1e-8,
+    "pseudo_arclength_continuation": false,
+    "classification": {
+      "fold_candidate": 1120,
+      "symmetry_candidate": 758,
+      "homogeneous_multiple": 144,
+      "missing": 162
+    },
+    "coverage_by_support": {
+      "triangular": {
+        "cases": 672,
+        "located": 650,
+        "missing": 22
+      },
+      "four_node": {
+        "cases": 1512,
+        "located": 1372,
+        "missing": 140
+      }
+    }
+  },
+  "fold_analysis": {
+    "status": "numerical_candidates",
+    "candidate_count": 1120,
+    "required_conditions": [
+      "Simple critical kernel",
+      "Invertible noncritical complement",
+      "Nonzero parameter transversality",
+      "Nonzero quadratic coefficient"
+    ],
+    "local_normal_form": "0 = A*tau + B*s^2/2 + higher_order_terms",
+    "branch_relation": "tau = -B*s^2/(2*A) + higher_order_terms",
+    "global_branch_certification": false
+  },
+  "cubic_analysis": {
+    "method": "Lyapunov-Schmidt reduction",
+    "symmetry_candidates": 758,
+    "simple_subcritical_candidates": 578,
+    "simple_supercritical_candidates": 0,
+    "multiple_candidates": 180,
+    "normal_form": "0 = s*(a*tau+b*s^2+higher_order_terms)",
+    "noncritical_correction_included": true,
+    "simple_case_conditions": [
+      "One-dimensional critical kernel",
+      "Invertible noncritical complement",
+      "Nonzero linear crossing coefficient",
+      "Nonzero effective cubic coefficient"
+    ],
+    "observed_simple_case": {
+      "linear_coefficient_sign": "positive",
+      "cubic_coefficient_sign": "positive",
+      "noncritical_complement": "negative_definite",
+      "branch_side": "gamma_below_gamma_critical",
+      "local_classification": "subcritical_pitchfork"
+    },
+    "interval_arithmetic_certification": false
+  },
+  "heterogeneous_multiple_analysis": {
+    "status": "numerically_refined",
+    "candidate_count": 180,
+    "verified_hypotheses_count": 180,
+    "symmetry": "S3",
+    "critical_dimension": 2,
+    "normal_form": "0 = a*tau*x+c*Pi(x^2)+higher_order_terms",
+    "quadratic_coefficient": "c = h_second(p_critical)/2",
+    "quadratic_coefficient_sign": "negative",
+    "branch_partition": [1, 2],
+    "local_branch_stability": "unstable_under_verified_hypotheses",
+    "global_continuation": false
+  },
+  "homogeneous_multiple_analysis": {
+    "status": "analytical",
+    "sampled_critical_points": 144,
+    "triangular": {
+      "symmetry": "S3",
+      "critical_gamma": 3,
+      "critical_dimension": 2,
+      "linear_coefficient": "3/8",
+      "quadratic_coefficient": "-27/8",
+      "cubic_coefficient": "27/8",
+      "branch_partition": [1, 2],
+      "local_branch_stability": "unstable"
+    },
+    "four_node": {
+      "symmetry": "S4",
+      "critical_gamma": 2,
+      "critical_dimension": 3,
+      "linear_coefficient": "8/9",
+      "quadratic_coefficient": "-32/9",
+      "cubic_coefficient": "512/81",
+      "branch_families": [
+        {
+          "partition": [1, 3],
+          "leading_order": "linear",
+          "local_branch_stability": "unstable"
+        },
+        {
+          "partition": [2, 2],
+          "leading_order": "cubic",
+          "branch_type": "subcritical",
+          "amplitude_relation": "s^2 = (9/64)*(2-gamma) + higher_order_terms",
+          "local_branch_stability": "unstable"
+        }
+      ]
+    }
+  },
+  "consolidated_critical_classification": {
+    "total_located": 2022,
+    "fold_candidates": 1120,
+    "refined_subcritical_pitchfork_candidates": 578,
+    "refined_heterogeneous_S3_multiple_points": 180,
+    "exact_homogeneous_multiple_points": 144,
+    "missing_cases": 162,
+    "total_examined": 2184
+  },
+  "analytical_stability_results": {
+    "single_edge_equilibria": {
+      "count": 276,
+      "stable_for": "gamma > 1 and 0 < mu <= 1",
+      "stratified_equivalence_classes": 21,
+      "rotational_equivalence_classes": 72,
+      "apical_distribution": {
+        "both_nodes_apical": 6,
+        "one_node_apical": 80,
+        "no_apical_nodes": 190
+      }
+    },
+    "homogeneous_triangles": {
+      "count": 24,
+      "stable_for": "1 < gamma < 3",
+      "critical_gamma": 3
+    },
+    "homogeneous_four_node_supports": {
+      "count": 6,
+      "stable_for": "1 < gamma < 2",
+      "critical_gamma": 2
+    },
+    "minimum_stable_equilibrium_counts": [
+      {
+        "regime": "1 < gamma < 2",
+        "lower_bound": 306
+      },
+      {
+        "regime": "2 < gamma < 3",
+        "lower_bound": 300
+      },
+      {
+        "regime": "gamma > 3",
+        "lower_bound": 276
+      }
+    ],
+    "critical_equalities_excluded_from_bounds": true
+  },
+  "geometric_existence_boundary": {
+    "gamma": 1,
+    "family": "One node in lower stratum a and m-1 nodes in upper stratum b",
+    "condition": "epsilon < (2*m-3)/(b*(m-1)^2-a*(m-2)^2)",
+    "examples": [
+      {
+        "strata": [1, 6, 6],
+        "epsilon_critical_exact": "3/23"
+      },
+      {
+        "strata": [2, 6, 6],
+        "epsilon_critical_exact": "3/22"
+      },
+      {
+        "strata": [3, 6, 6],
+        "epsilon_critical_exact": "1/7"
+      },
+      {
+        "strata": [1, 6, 6, 6],
+        "epsilon_critical_exact": "1/10"
+      },
+      {
+        "strata": [2, 6, 6, 6],
+        "epsilon_critical_exact": "5/46"
+      },
+      {
+        "strata": [3, 6, 6, 6],
+        "epsilon_critical_exact": "5/42"
+      }
+    ]
+  },
+  "symmetry_framework": {
+    "geometric_rotational_group": "Z4",
+    "effective_stratified_operator_group": "(S4)^6",
+    "groups_are_not_identical": true,
+    "multiple_critical_spaces": {
+      "S2": 1,
+      "S3": 2,
+      "S4": 3
+    },
+    "equivariant_projection": "Pi_r = I - ones(r,r)/r",
+    "symmetry_breaking_guarantees_stability": false
+  },
+  "scientific_conclusions": [
+    "The canonical operator admits multiple locally stable relational equilibria.",
+    "Geometric heterogeneity affects collective stability thresholds.",
+    "Homogeneous stability thresholds depend on support size.",
+    "Simple symmetry-breaking candidates exhibit subcritical behavior in the sampled campaign.",
+    "Multiple two-group symmetry-breaking branches are locally unstable under the stated normal-form hypotheses.",
+    "Universal apical attraction is not established.",
+    "Local bifurcation analysis does not determine global basin membership.",
+    "Equivalence between TRGC and Codigo Viajer is not established."
+  ],
+  "reproducibility": {
+    "summary_only": true,
+    "individual_records_omitted": true,
+    "source_artifact": "Original consolidated canonical_bifurcation_results.json",
+    "source_artifact_preserved_separately": "Recommended",
+    "dependencies": [
+      "Python 3",
+      "NumPy",
+      "SciPy"
+    ],
+    "scripts": [
+      "canonical_stability_audit.py",
+      "canonical_bifurcation_audit.py"
+    ],
+    "commands": [
+      "python canonical_stability_audit.py",
+      "python canonical_bifurcation_audit.py --stability-input canonical_stability_results.json"
+    ],
+    "intermediate_output": "canonical_stability_results.json",
+    "full_output": "canonical_bifurcation_results.json",
+    "warning": "Running the full audit may replace this summary with the complete individual-record artifact.",
+    "summary_is_not_a_substitute_for_individual_numerical_records": true
+  },
+  "related_documents": [
+    "CANONICAL_STABILITY_MAP.md",
+    "CANONICAL_BIFURCATIONS.md",
+    "EQUIVARIANT_NORMAL_FORMS.md",
+    "HIGHER_SUPPORT_EQUILIBRIA.md",
+    "REDUCED_SUPPORT_STABILITY.md",
+    "CANONICAL_OPERATOR_CORRESPONDENCE.md",
+    "RELATIONAL_QUOTIENT_METRIC.md",
+    "EQUILIBRIUM_CLASSIFICATION.md",
+    "EFFECTIVE_SYMMETRY_GROUP.md",
+    "MULTILAYER_INVARIANTS.md",
+    "README.md"
+  ],
+  "pending_work": [
+    "Exhaustive equilibrium root certification",
+    "Pseudo-arclength continuation",
+    "Global branch connectivity",
+    "Interval arithmetic validation",
+    "Higher-order exceptional degeneracies",
+    "Global attraction basin classification",
+    "Hybrid operator verification",
+    "Independent TRGC operator correspondence"
+  ],
+  "governance": {
+    "level_II": "retained",
+    "level_III": "open",
+    "automatic_promotion": false,
+    "lambda_reserved_for_factor": 4,
+    "v1_6": "isolated",
+    "v1_7": "isolated",
+    "post_hoc_rescaling": false,
+    "episode_44": "unchanged",
+    "hybrid_operator_validated": false,
+    "TRGC_equivalence_established": false
+  },
+  "final_status": {
+    "analytical_results": "conditional_and_exact_where_stated",
+    "numerical_results": "exploratory_and_reproducible",
+    "global_bifurcation_diagram": "not_exhaustively_certified",
+    "research_phase": "canonical_stability_and_equivariant_bifurcations",
+    "document_status": "summary"
+  }
+}
