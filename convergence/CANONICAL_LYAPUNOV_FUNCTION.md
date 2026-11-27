@@ -1,0 +1,19 @@
+Canonical weighted Lyapunov function
+Version: 1.0.0 | Date: 2026-11-27
+Domain and theorem
+Let N>=2, C0>0, fixed positive weights g_i, gamma>0 and 0<mu<=1. R is symmetric, nonnegative, zero diagonal, with sum of upper-triangular entries C0. Write rho for its largest algebraic eigenvalue and v for any nonnegative unit eigenvector at rho. Define H_ij=C0 (g_i g_j v_i v_j)^gamma/Z for i<j, with Z the sum of these powers, and F_v(R)=(1-mu)R+mu H. Since rho>0, some v_i v_j on a positive edge is positive and Z>0.
+Set q=1+1/gamma and
+$$|R|{q,g}=\left(\sum{i<j}R_{ij}^q/(g_i g_j)\right)^{1/q},\qquad L(R)=\rho(R)/|R|_{q,g}.$$
+Then L(F_v(R))>=L(R), with equality exactly when F_v(R)=R, for every admissible v. The norm is on upper-triangular coordinates. L is continuous, bounded on the compact fixed-mass simplex, and independent of the choice of v.
+Proof
+Write c_ij=v_i v_j, w_ij=1/(g_i g_j). Rayleigh gives rho(S)>=2<c,S> and equality for S=R. Weighted Holder gives the unique maximizing ray for <c,S>/||S||_{q,g} on the nonnegative cone: S_ij proportional to (c_ij/w_ij)^(1/(q-1)). This is precisely H, including zero entries. Fixed positive mass selects a unique point on the ray. If H differs from R, then <c,H>/||H|| > <c,R>/||R||. For S=(1-mu)R+mu H, the triangle inequality bounds ||S|| by (1-mu)||R||+mu||H||. The numerator is positive and linear, so its ratio to that upper bound is strictly larger than <c,R>/||R||. Rayleigh completes the strict inequality. If H=R equality is immediate.
+Multiple Perron eigenvalues
+No continuous global eigenvector selection is required. Treat all admissible F_v as a correspondence. Its graph is compact: the unit nonnegative Perron pairs form a closed subset of a compact product, and the update is continuous on that set. The strict inequality holds for every nonstationary step. See GLOBAL_RELATIONAL_CONVERGENCE.md for the limit theorem. An arbitrary deterministic selection need not be equivariant.
+Quotient
+For any weight-preserving permutation P, L(PRP^T)=L(R). The full correspondence is equivariant since v maps to Pv. A single-valued induced quotient map requires preservation of orbit equivalence. L descends to the quotient and increases strictly on nonstationary class updates. Indeed, equality of L forces equality of the original states, not just equivalence. Nontrivial periodic or recurrent trajectories are excluded by strict monotonicity. Any heteroclinic connection between distinct equilibria has strictly increasing endpoint L values; the corresponding directed graph is acyclic. This does not establish the existence of particular connections or describe basin adjacency.
+Canonical geometry
+For 24 nodes in six strata, g_i=(1-j_i epsilon)^(-1/2), j_i in {1,...,6}, 0<epsilon<1/6. The theorem applies without changing the operator. At an edge equilibrium E_ab, rho=C0 and L(E_ab)=(g_a g_b)^(gamma/(gamma+1)). Ordering these values does not determine basin sizes or imply universal apical selection.
+Numerical evidence
+Run python canonical_lyapunov_audit.py (Python 3.13.5, NumPy 2.3.5, SciPy 1.17.0 in the verified rerun). The script writes canonical_lyapunov_results.json beside itself. Seed 49; 1440 sampled updates, zero decreases below -1e-12, minimum increment 1.1467007343668456e-9. Forty-four multiple-Perron choices on two equal disconnected edges with homogeneous weights give minimum increment 0.04831863081163845. A reversed-direction control gives -0.0014922493410753912. These are finite numerical controls, not proof or an exhaustive trajectory campaign. The JSON contains per-parameter aggregates, not every sampled state.
+Governance
+Level II retained; Level III open; no automatic promotion; lambda reserved for the Fourth Factor; v1.6/v1.7 isolated; no post hoc rescaling; Episode 44 frozen. No hybrid validation or TRGC equivalence.
