@@ -916,8 +916,256 @@ La convergencia no se presupone: se demuestra, se verifica y se consolida.
 
 ---
 
+24. Fase II — Equilibrios de soporte superior, estabilidad y bifurcaciones
+
+24.1. Objetivo
+
+La segunda fase del programa de convergencia amplía el estudio de los equilibrios de soporte reducido hacia configuraciones relacionales de tres o más nodos activos.
+
+Se incorporan resultados analíticos y computacionales relativos a:
+
+- Existencia y multiplicidad de equilibrios.
+- Soportes homogéneos y heterogéneos.
+- Reconstrucción exacta de matrices relacionales.
+- Estabilidad local y espectro dinámico.
+- Influencia de los pesos geométricos.
+- Aparición y desaparición de ramas de equilibrio.
+- Bifurcaciones silla-nodo.
+
+24.2. Nuevos documentos incorporados
+
+Archivo| Función
+"HIGHER_SUPPORT_EQUILIBRIA.md" (HIGHER_SUPPORT_EQUILIBRIA.md)| Desarrollo matemático de los equilibrios de soporte superior.
+"higher_support_audit.py" (higher_support_audit.py)| Auditoría computacional reproducible.
+"higher_support_results.json" (higher_support_results.json)| Resultados numéricos y controles de verificación.
+
+Estos documentos complementan los resultados previamente establecidos sobre estabilidad de soporte reducido, clasificación de equilibrios, equivariancia y dinámica en espacios cociente.
+
+24.3. Caracterización general de los equilibrios
+
+Para el operador relacional de referencia estudiado, todo equilibrio posee un soporte activo completamente conectado.
+
+La condición de equilibrio admite una reducción algebraica exacta:
+
+$$
+g_i^{\frac{2\gamma}{\gamma+1}}
+p_i^{\frac{\gamma-1}{\gamma+1}}
+(1-p_i)=K
+$$
+
+con:
+
+$$
+p_i>0,\qquad \sum_{i\in S}p_i=1.
+$$
+
+Esta formulación permite reducir el problema matricial a un sistema de ecuaciones escalares.
+
+Se establecen tres regímenes:
+
+- Para 0 < γ < 1, existe exactamente un equilibrio por soporte admisible de al menos dos nodos.
+- Para γ = 1, existe una solución explícita sometida a una condición necesaria y suficiente de positividad.
+- Para γ > 1, pueden coexistir múltiples ramas de equilibrio sobre un mismo soporte.
+
+En el sistema de 24 nodos, el primer régimen admite exactamente 16.777.191 equilibrios matemáticos.
+
+Este recuento no constituye una clasificación de atractores.
+
+24.4. Estabilidad de soportes homogéneos
+
+Para soportes homogéneos de tamaño m ≥ 3, el umbral crítico viene dado por:
+
+$$
+\gamma_c=\frac{m}{m-2}.
+$$
+
+Tamaño del soporte| Umbral crítico
+3| 3
+4| 2
+6| 1,5
+12| 1,2
+24| 12/11
+
+Los soportes homogéneos de tamaño superior a cuatro representan casos matemáticos de referencia, no configuraciones de peso homogéneo necesariamente presentes en la arquitectura estratificada canónica.
+
+Bajo la hipótesis de seis estratos de cuatro nodos, con pesos positivos constantes dentro de cada estrato, se obtienen las siguientes cotas inferiores:
+
+Régimen| Equilibrios localmente estables
+1 < γ < 2| Al menos 306
+2 < γ < 3| Al menos 300
+γ > 3| Al menos 276
+
+Para 1 < γ < 2, estos equilibrios comprenden al menos 33 clases estratificadas y 84 clases rotacionales, bajo los grupos correspondientes.
+
+No se afirma que estas cotas constituyan una enumeración exhaustiva.
+
+24.5. Estabilidad de soportes heterogéneos
+
+Se establece una reducción espectral mediante la matriz estocástica:
+
+$$
+P_{ij}=\frac{p_j}{1-p_i},\qquad i\neq j,
+$$
+
+con diagonal nula.
+
+Los autovalores dinámicos no transversales vienen dados por:
+
+$$
+\eta_k=1-\mu+
+\mu\gamma\frac{1+\ell_k}{1-\ell_k}.
+$$
+
+Para γ > 1, 0 < μ ≤ 1 y soportes de al menos tres nodos, el criterio de estabilidad lineal estricta es:
+
+$$
+\ell_2<-\frac{\gamma-1}{\gamma+1}.
+$$
+
+La desigualdad estricta garantiza estabilidad local asintótica. La desigualdad inversa estricta implica inestabilidad.
+
+La igualdad requiere un análisis no lineal adicional.
+
+Esta reducción permite estudiar el espectro relevante mediante matrices de dimensión igual al número de nodos activos.
+
+24.6. Verificación computacional
+
+La auditoría utiliza NumPy y SciPy y compara el espectro reducido con el Jacobiano obtenido mediante diferenciación numérica directa.
+
+Configuración de referencia:
+
+- γ = 1,5.
+- μ = 0,2.
+- Masa relacional C₀ = 1.
+- Pesos geométricos ilustrativos.
+
+Resultados:
+
+Configuración| Equilibrios encontrados| Estables| Inestables
+Triángulo homogéneo| 4| 1| 3
+Triángulo heterogéneo| 4| 1| 3
+Cuatro nodos heterogéneos| 9| 0| 9
+Total| 17| 2| 15
+
+Error espectral máximo observado: aproximadamente 8,03 × 10⁻¹¹.
+
+Estado de los controles programados: PASS.
+
+Este estado se refiere exclusivamente a las comprobaciones ejecutadas y no implica una validación global del modelo.
+
+24.7. Bifurcación silla-nodo heterogénea
+
+Para un soporte triangular con pesos:
+
+$$
+g=(1,;1.1,;1.2),
+$$
+
+se localiza numéricamente un punto crítico en:
+
+$$
+\gamma^*\approx1.56556420.
+$$
+
+Las comprobaciones realizadas incluyen:
+
+- Existencia numérica del equilibrio crítico.
+- Singularidad simple del Jacobiano reducido.
+- Autovalor dinámico unitario simple.
+- Transversalidad respecto de γ.
+- No degeneración cuadrática.
+- Contraste directo con el operador dinámico.
+- Consistencia ante distintos pasos de diferenciación.
+
+Los resultados respaldan una bifurcación silla-nodo genérica sobre la cara triangular invariante.
+
+Se identifica la colisión local de una rama estable y otra inestable, seguida de su desaparición al superar el valor crítico.
+
+La existencia exacta de la raíz crítica todavía no ha sido certificada mediante aritmética de intervalos.
+
+Tampoco se extiende automáticamente la forma normal de segundo orden al dominio completo de 24 nodos.
+
+24.8. Consecuencias para la identidad relacional
+
+Los resultados permiten distinguir:
+
+- Selección geométrica de la configuración de equilibrio.
+- Selección dinámica de los soportes estables.
+- Multiplicidad de equilibrios dentro de un mismo soporte.
+- Transformación del conjunto de equilibrios mediante bifurcaciones.
+- Clasificación de equilibrios bajo grupos de simetría.
+- Estabilidad local frente a convergencia global.
+
+La existencia de pesos geométricos superiores no garantiza por sí sola dominancia apical universal ni una mayor probabilidad de atracción.
+
+La distribución de las cuencas deberá estudiarse independientemente.
+
+24.9. Reproducción
+
+Desde la carpeta convergence:
+
+python -m pip install numpy scipy
+python higher_support_audit.py
+
+El programa genera el archivo:
+
+higher_support_results.json
+
+Los resultados deben interpretarse conjuntamente con las hipótesis, limitaciones y condiciones de aplicación recogidas en HIGHER_SUPPORT_EQUILIBRIA.md.
+
+24.10. Trabajo pendiente
+
+- Certificación rigurosa de raíces y bifurcaciones.
+- Enumeración exhaustiva de ramas heterogéneas.
+- Clasificación de soportes por composición estratificada.
+- Verificación mediante pesos geométricos canónicos fijados por commit.
+- Auditoría numérica de perturbaciones exteriores al soporte.
+- Estudio no lineal de los casos críticos.
+- Clasificación de atractores de soporte superior.
+- Correspondencia entre cuencas de atracción y espacios cociente.
+- Contraste matemático independiente con la TRCG.
+
+24.11. Estado de la convergencia
+
+La incorporación de estos resultados amplía el programa de investigación desde la clasificación estructural de los equilibrios hacia el estudio de su estabilidad, multiplicidad y transformación dinámica.
+
+Se mantiene la independencia matemática de las formulaciones originales.
+
+La correspondencia estructural no implica equivalencia dinámica.
+
+La evidencia computacional no sustituye a la demostración matemática.
+
+La estabilidad local no implica convergencia global.
+
+24.12. Inventario actualizado
+
+- Archivos anteriores: 36.
+- Nuevos archivos de soporte superior: 3.
+- Total de archivos en convergence: 39, incluido este README.
+- Archivos eliminados: 0.
+
+24.13. Gobernanza
+
+Nivel II retenido.
+
+Nivel III abierto.
+
+Sin ascenso automático.
+
+λ reservado al 4º Factor.
+
+Versiones v1.6 y v1.7 aisladas.
+
+Sin reescalados post hoc.
+
+Campaña experimental del Episodio 44 intacta.
+
+La convergencia continúa mediante demostraciones independientes, auditorías reproducibles y delimitación explícita de las condiciones de validez.
+
+La correspondencia abre el camino; únicamente las demostraciones podrán establecer la equivalencia.
+
 TRCG — CÓDIGO VIAJER — PIRÁMIDE-PARÁBOLA
 
 Nivel II retenido · Nivel III abierto · λ reservado al 4º Factor.
 
-FIN DEL DOCUMENTO
+FIN DE DOCUMENTO
