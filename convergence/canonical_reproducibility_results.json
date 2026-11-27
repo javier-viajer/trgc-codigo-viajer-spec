@@ -1,0 +1,284 @@
+{
+  "document": "CANONICAL_REPRODUCIBILITY_RESULTS",
+  "version": "1.0.0",
+  "date": "2026-11-27",
+  "project": "TRGC-Codigo-Viajer-Spec",
+  "model": "Pyramid-Parabola",
+  "directory": "convergence",
+  "repository": {
+    "url": "https://github.com/javier-viajer/trgc-codigo-viajer-spec",
+    "audited_commit": "6d8a99c74f45a6518cd892d6b633ca8362e853df",
+    "repository_modified_during_audit": false
+  },
+  "scope": {
+    "operator": "Canonical relational operator",
+    "reproduction_type": "Same-algorithm computational reproduction",
+    "alternative_algorithm_validation": false,
+    "exhaustive_mathematical_certification": false,
+    "hybrid_operator_included": false,
+    "episode_44_included": false
+  },
+  "environment": {
+    "status": "reported_reproduction_environment",
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cross_platform_reproducibility_tested": false
+  },
+  "source_integrity": {
+    "canonical_stability_audit.py": {
+      "git_blob_sha": "c1e9e2a4aaeea1ff4652d886ce55124abe9065c6",
+      "matches_repository": true
+    },
+    "canonical_bifurcation_audit.py": {
+      "git_blob_sha": "02d67cdb40638d5504457dfd5a63a880a34aff12",
+      "matches_repository": true
+    },
+    "local_source_hashes_rechecked": true
+  },
+  "campaign_parameters": {
+    "nodes": 24,
+    "strata": 6,
+    "nodes_per_stratum": 4,
+    "support_sizes": [3, 4],
+    "triangular_compositions": 56,
+    "four_node_compositions": 126,
+    "total_compositions": 182,
+    "mu": 0.2,
+    "undirected_mass": 1.0,
+    "stability_epsilon_values": [0.05, 0.15],
+    "stability_gamma_values": [1.5, 2.5],
+    "critical_epsilon_grid": {
+      "type": "linear",
+      "minimum": 0.001,
+      "maximum": 0.165,
+      "samples": 12
+    }
+  },
+  "stability_reproduction": {
+    "status": "PASS",
+    "total_cases": {
+      "expected": 728,
+      "observed": 728,
+      "match": true
+    },
+    "located_equilibria": {
+      "expected": 3278,
+      "observed": 3278,
+      "match": true
+    },
+    "stable_equilibria": {
+      "expected": 145,
+      "observed": 145,
+      "match": true
+    },
+    "unstable_equilibria": {
+      "expected": 3133,
+      "observed": 3133,
+      "match": true
+    },
+    "critical_equilibria": 0,
+    "maximum_matrix_residual": 4.718447854656915e-14,
+    "matrix_residual_tolerance": 1e-8,
+    "residual_check": "PASS",
+    "detailed_results": [
+      {
+        "support": 3,
+        "epsilon": 0.05,
+        "gamma": 1.5,
+        "stable": 56,
+        "unstable": 168
+      },
+      {
+        "support": 3,
+        "epsilon": 0.05,
+        "gamma": 2.5,
+        "stable": 6,
+        "unstable": 118
+      },
+      {
+        "support": 3,
+        "epsilon": 0.15,
+        "gamma": 1.5,
+        "stable": 20,
+        "unstable": 132
+      },
+      {
+        "support": 3,
+        "epsilon": 0.15,
+        "gamma": 2.5,
+        "stable": 6,
+        "unstable": 118
+      },
+      {
+        "support": 4,
+        "epsilon": 0.05,
+        "gamma": 1.5,
+        "stable": 46,
+        "unstable": 1150
+      },
+      {
+        "support": 4,
+        "epsilon": 0.05,
+        "gamma": 2.5,
+        "stable": 0,
+        "unstable": 422
+      },
+      {
+        "support": 4,
+        "epsilon": 0.15,
+        "gamma": 1.5,
+        "stable": 11,
+        "unstable": 605
+      },
+      {
+        "support": 4,
+        "epsilon": 0.15,
+        "gamma": 2.5,
+        "stable": 0,
+        "unstable": 420
+      }
+    ]
+  },
+  "critical_reproduction": {
+    "status": "PASS",
+    "total_cases": 2184,
+    "located_critical_points": 2022,
+    "missing_critical_points": 162,
+    "classification": {
+      "fold_candidate": 1120,
+      "symmetry_candidate": 758,
+      "homogeneous_multiple": 144,
+      "missing": 162
+    },
+    "coverage_by_support": {
+      "triangular": {
+        "total_cases": 672,
+        "located": 650,
+        "missing": 22
+      },
+      "four_node": {
+        "total_cases": 1512,
+        "located": 1372,
+        "missing": 140
+      }
+    },
+    "maximum_critical_residual": 9.715907189900008e-9,
+    "critical_residual_tolerance": 1e-8,
+    "residual_check": "PASS",
+    "aggregate_counts_match": true,
+    "missing_roots_interpretation": "Unresolved numerical cases, not proof of nonexistence"
+  },
+  "cubic_reproduction": {
+    "status": "PASS",
+    "symmetry_candidates": 758,
+    "subcritical": 578,
+    "supercritical": 0,
+    "multiple_candidate": 180,
+    "aggregate_counts_match": true,
+    "exhaustive_classification": false
+  },
+  "multiple_reproduction": {
+    "status": "PASS",
+    "symmetry": "S3",
+    "heterogeneous_candidates": 180,
+    "verified_numerical_hypotheses": 180,
+    "maximum_refinement_residual": 5.204170427930421e-16,
+    "refinement_residual_tolerance": 1e-9,
+    "residual_check": "PASS",
+    "aggregate_counts_match": true,
+    "interval_certification": false
+  },
+  "artifact_integrity": {
+    "hash_algorithm": "SHA-256",
+    "complete_bifurcation_artifact": {
+      "filename": "canonical_bifurcation_results.json",
+      "size_bytes": 2874010,
+      "original_sha256": "607b6f246d18529fe847d112fdb063b9bca975e488385e595c745971db91386f",
+      "regenerated_sha256": "607b6f246d18529fe847d112fdb063b9bca975e488385e595c745971db91386f",
+      "hashes_match": true,
+      "hashes_rechecked": true,
+      "original_byte_identity": "reported_in_previous_reproduction",
+      "individual_records_included": true
+    },
+    "intermediate_stability_artifact": {
+      "filename": "canonical_stability_results.json",
+      "size_bytes": 623610,
+      "sha256": "7e399f265e2972f79ba818517fd2b9eea56b1038daa92eb7bab1dec1c379266d",
+      "hash_rechecked": true,
+      "matches_embedded_stability_records": true
+    },
+    "repository_summary": {
+      "filename": "canonical_bifurcation_results.json",
+      "individual_records_included": false,
+      "same_artifact_as_complete_output": false,
+      "complete_output_hash_applicable": false
+    }
+  },
+  "reproduction_commands": [
+    "python canonical_stability_audit.py",
+    "python canonical_bifurcation_audit.py --stability-input canonical_stability_results.json --output canonical_bifurcation_results_full.json"
+  ],
+  "reproduction_requirements": {
+    "run_from_convergence_directory": true,
+    "reuse_existing_critical_input": false,
+    "preserve_repository_summary": true,
+    "preserve_complete_outputs": true
+  },
+  "verification_status": {
+    "same_algorithm_reproduction": "REPORTED_PASS",
+    "source_hash_integrity": "PASS",
+    "retained_artifact_integrity": "PASS",
+    "stability_counts": "PASS",
+    "critical_counts": "PASS",
+    "cubic_counts": "PASS",
+    "multiple_point_counts": "PASS",
+    "numerical_residual_checks": "PASS",
+    "complete_artifact_hash_comparison": "PASS",
+    "alternative_algorithm_validation": "PENDING",
+    "cross_platform_reproduction": "PENDING",
+    "exhaustive_root_certification": "PENDING",
+    "global_branch_continuation": "PENDING",
+    "global_basin_classification": "PENDING",
+    "hybrid_operator_validation": "NOT_TESTED",
+    "TRGC_equivalence": "NOT_ESTABLISHED"
+  },
+  "scientific_limitations": [
+    "Same-algorithm reproduction does not exclude systematic algorithmic errors.",
+    "Finite numerical searches do not establish exhaustive root enumeration.",
+    "Missing critical roots do not establish mathematical nonexistence.",
+    "Sampled critical points are not independent global bifurcation events.",
+    "Local stability does not determine global basin membership.",
+    "Byte-level agreement does not constitute mathematical proof.",
+    "Complete numerical records are not included in the repository summary.",
+    "No equivalence between TRGC and Codigo Viajer is established."
+  ],
+  "next_research_objectives": [
+    "Independent equilibrium search algorithms",
+    "Independent Jacobian and spectral verification",
+    "Pseudo-arclength continuation",
+    "Additional critical branch detection",
+    "Interval-certified root searches",
+    "Global attraction basin classification",
+    "Symmetry-induced basin correspondence",
+    "Independent TRGC operator comparison"
+  ],
+  "governance": {
+    "level_II": "retained",
+    "level_III": "open",
+    "automatic_promotion": false,
+    "lambda_reserved_for_factor": 4,
+    "v1_6": "isolated",
+    "v1_7": "isolated",
+    "post_hoc_rescaling": false,
+    "episode_44": "unchanged",
+    "hybrid_operator_validated": false,
+    "TRGC_equivalence_established": false
+  },
+  "final_status": {
+    "artifact_consistency": "PASS",
+    "computational_reproduction": "REPORTED_PASS",
+    "independent_mathematical_certification": "PENDING",
+    "document_type": "reproducibility_summary"
+  }
+}
