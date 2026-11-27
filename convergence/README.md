@@ -2,8 +2,8 @@ CONVERGENCE — TRCG / CÓDIGO VIAJER
 
 Programa de investigación sobre convergencia relacional
 
-Versión: 1.1.0
-Fecha: 2026-11-26
+Versión: 1.3.0
+Fecha: 2026-11-27
 Estado: Investigación activa — consolidación documental completada.
 Commit de referencia de la auditoría: "cc9faeefaba2d5fc2e4329be77d69f5d930d045e"
 
@@ -1163,6 +1163,569 @@ Campaña experimental del Episodio 44 intacta.
 La convergencia continúa mediante demostraciones independientes, auditorías reproducibles y delimitación explícita de las condiciones de validez.
 
 La correspondencia abre el camino; únicamente las demostraciones podrán establecer la equivalencia.
+
+---
+
+## 25. Canonical Stability and Equivariant Bifurcations
+
+### 25.1. Research Scope
+
+This research phase extends the canonical relational operator analysis from single-edge equilibria to higher-support equilibria, critical stability curves and equivariant bifurcations.
+
+The analysis concerns the canonical Pyramid-Parabola relational operator.
+
+It does not establish equivalence with TRGC, validate the hybrid operator or modify the frozen Episode 44 experimental campaign.
+
+### 25.2. Canonical Geometry
+
+The geometric parameter is:
+
+$$
+\varepsilon=\frac{h_0}{H},
+\qquad 0<\varepsilon<\frac16.
+$$
+
+The canonical stratum weights are:
+
+$$
+g_j=(1-j\varepsilon)^{-1/2},
+\qquad j=1,\ldots,6.
+$$
+
+The architecture contains 24 nodes distributed across six strata, with four nodes per stratum.
+
+The geometric rotational group and the effective stratified symmetry group of the relational operator remain distinct:
+
+$$
+G_{\mathrm{rot}}=\mathbb Z_4,
+$$
+
+$$
+G_{\mathrm{strat}}=(S_4)^6.
+$$
+
+### 25.3. Higher-Support Equilibrium Reduction
+
+For an equilibrium with positive components on its active support, the scalar reduction is:
+
+$$
+g_i^{\frac{2\gamma}{\gamma+1}}
+p_i^{\frac{\gamma-1}{\gamma+1}}
+(1-p_i)=K,
+$$
+
+subject to:
+
+$$
+p_i>0,
+\qquad
+\sum_i p_i=1.
+$$
+
+The relational equilibrium is reconstructed through:
+
+$$
+b_i=\sqrt{\frac{p_i}{1-p_i}},
+$$
+
+$$
+R_{ij}
+=
+C_0
+\frac{b_i b_j}
+{\sum_{k<l}b_kb_l},
+\qquad i\neq j.
+$$
+
+This reduction provides a common framework for homogeneous and heterogeneous supports.
+
+### 25.4. Spectral Stability Criterion
+
+Define:
+
+$$
+\alpha=\frac{\gamma-1}{\gamma+1}.
+$$
+
+The auxiliary symmetric matrix is:
+
+$$
+A=bb^T-\operatorname{diag}(b_i^2).
+$$
+
+Its eigenvalues satisfy:
+
+$$
+1=\ell_1>\ell_2\geq\cdots\geq\ell_m.
+$$
+
+The internal dynamic modes are:
+
+$$
+\eta_k=
+1-\mu+
+\mu\gamma\frac{1+\ell_k}{1-\ell_k}.
+$$
+
+For the canonical operator, with gamma greater than one and positive admissible update parameter, strict local stability is characterized by:
+
+$$
+\ell_2<-\alpha.
+$$
+
+Strict instability follows when:
+
+$$
+\ell_2>-\alpha.
+$$
+
+The critical equality is:
+
+$$
+\ell_2=-\alpha.
+$$
+
+Critical equality requires nonlinear analysis and cannot be classified through linear stability alone.
+
+### 25.5. Canonical Stability Campaign
+
+The numerical campaign covers all 182 stratified compositions of three-node and four-node supports.
+
+| Support size | Compositions |
+|---|---:|
+| Three nodes | 56 |
+| Four nodes | 126 |
+| Total | 182 |
+
+The sampled parameters are:
+
+- Epsilon: 0.05 and 0.15.
+- Gamma: 1.5 and 2.5.
+- Mu: 0.2.
+- Undirected relational mass: 1.0.
+
+The reported campaign contains 728 parameter-composition cases.
+
+| Support | Epsilon | Gamma | Stable | Unstable |
+|---|---:|---:|---:|---:|
+| Three nodes | 0.05 | 1.5 | 56 | 168 |
+| Three nodes | 0.05 | 2.5 | 6 | 118 |
+| Three nodes | 0.15 | 1.5 | 20 | 132 |
+| Three nodes | 0.15 | 2.5 | 6 | 118 |
+| Four nodes | 0.05 | 1.5 | 46 | 1150 |
+| Four nodes | 0.05 | 2.5 | 0 | 422 |
+| Four nodes | 0.15 | 1.5 | 11 | 605 |
+| Four nodes | 0.15 | 2.5 | 0 | 420 |
+| Total | | | 145 | 3133 |
+
+The corrected accumulated number of located equilibria is 3278.
+
+These counts aggregate different compositions and parameter configurations. They must not be interpreted as simultaneous attractor counts for a single dynamical system.
+
+Complete composition coverage does not imply exhaustive equilibrium root certification.
+
+### 25.6. Critical Curve Campaign
+
+Critical points are investigated through the simultaneous equilibrium equations and the spectral condition:
+
+$$
+\ell_2=-\frac{\gamma-1}{\gamma+1}.
+$$
+
+The reported critical campaign uses 12 equally spaced geometric parameter values between 0.001 and 0.165.
+
+| Quantity | Count |
+|---|---:|
+| Stratified compositions | 182 |
+| Geometric samples | 12 |
+| Parameter-composition cases | 2184 |
+| Located critical points | 2022 |
+| Cases without a located critical point | 162 |
+
+The resulting sampled critical loci constitute a preliminary bifurcation atlas.
+
+They do not establish continuous branch connectivity, exhaustive root coverage or mathematical nonexistence in cases where no root was located.
+
+### 25.7. Consolidated Critical Classification
+
+The reported numerical and analytical classification is:
+
+| Critical family | Count |
+|---|---:|
+| Fold candidates | 1120 |
+| Refined subcritical pitchfork candidates | 578 |
+| Refined heterogeneous S3 multiple points | 180 |
+| Exact homogeneous multiple points | 144 |
+| Total located critical points | 2022 |
+| Cases without a located critical point | 162 |
+| Total examined cases | 2184 |
+
+These counts represent sampled critical points rather than independent global bifurcation events.
+
+Numerical classification remains subject to the acceptance tolerances and hypotheses of the corresponding audit procedures.
+
+### 25.8. Simple Fold Candidates
+
+For a simple critical kernel, the local equilibrium reduction takes the form:
+
+$$
+0=A\tau+\frac12Bs^2+
+\text{higher-order terms},
+$$
+
+where:
+
+$$
+\tau=\gamma-\gamma_c.
+$$
+
+A generic fold requires:
+
+- A one-dimensional critical kernel.
+- An invertible noncritical complement.
+- Nonzero parameter transversality.
+- A nonzero quadratic coefficient.
+
+Under these conditions:
+
+$$
+\tau=-\frac{B}{2A}s^2+
+\text{higher-order terms}.
+$$
+
+The numerical fold classification does not constitute exhaustive global branch certification.
+
+### 25.9. Simple Symmetry-Breaking Bifurcations
+
+For a simple exchange symmetry between two equivalent nodes, the reduced equilibrium equation is:
+
+$$
+0=s(a\tau+bs^2+
+\text{higher-order terms}).
+$$
+
+The effective cubic coefficient must include the correction induced by the noncritical complement.
+
+The reported simple symmetry-breaking campaign identifies 578 refined subcritical pitchfork candidates.
+
+No supercritical pitchfork was reported in this sampled family.
+
+This observation does not exclude supercritical bifurcations in unexplored parameter regions or different operators.
+
+### 25.10. Multiple Equivariant Normal Forms
+
+For a block of r equivalent critical nodes, define:
+
+$$
+E_r=
+\left\{
+x\in\mathbb R^r:
+\sum_i x_i=0
+\right\}.
+$$
+
+The critical dimension is:
+
+$$
+\dim E_r=r-1.
+$$
+
+The equivariant projection is:
+
+$$
+\Pi_r=
+I-\frac1r\mathbf1\mathbf1^T.
+$$
+
+The reduced equilibrium equation contains the terms:
+
+$$
+0=
+a\tau x+
+c\Pi_r(x^{\odot2})+
+d\Pi_r(x^{\odot3})+
+e\|x\|^2x+
+\cdots.
+$$
+
+For a critical block with gamma greater than one:
+
+$$
+c=\frac12h''(p_*)<0.
+$$
+
+Consequently, multiple symmetry-breaking bifurcations cannot generally be reduced to a scalar cubic pitchfork.
+
+### 25.11. S3 and S4 Branch Families
+
+The principal two-group symmetry-breaking families are:
+
+| Symmetry | Partition | Leading order |
+|---|---|---|
+| S2 | 1 + 1 | Cubic |
+| S3 | 1 + 2 | Quadratic |
+| S4 | 1 + 3 | Quadratic |
+| S4 | 2 + 2 | Cubic along the balanced direction |
+
+For S3, the characteristic perturbation is:
+
+$$
+x=(2s,-s,-s).
+$$
+
+For the unbalanced S4 family:
+
+$$
+x=(3s,-s,-s,-s).
+$$
+
+For the balanced S4 family:
+
+$$
+x=(s,s,-s,-s).
+$$
+
+Under the stated kernel, complement and crossing hypotheses, the multiple two-group symmetry-breaking branches possess unstable directions.
+
+The reported numerical refinement of 180 heterogeneous S3 candidates supports the applicability of this conditional analytical framework to those sampled points.
+
+### 25.12. Exact Homogeneous Critical Thresholds
+
+For a homogeneous support of size m greater than two:
+
+$$
+\gamma_c=\frac{m}{m-2}.
+$$
+
+In particular:
+
+| Support | Critical gamma | Critical dimension |
+|---|---:|---:|
+| Homogeneous triangle | 3 | 2 |
+| Homogeneous four-node support | 2 | 3 |
+
+For the homogeneous balanced S4 branch:
+
+$$
+s^2=
+\frac9{64}(2-\gamma)
++
+O((2-\gamma)^2).
+$$
+
+This branch is locally subcritical and possesses unstable transverse directions.
+
+The homogeneous critical thresholds are independent of the common stratum weight because that weight cancels under normalization.
+
+### 25.13. Analytical Lower Bounds on Stable Equilibria
+
+For every admissible canonical geometry and:
+
+$$
+0<\mu\leq1,
+$$
+
+the following lower bounds hold away from the stated critical equalities:
+
+| Gamma regime | Minimum stable equilibria |
+|---|---:|
+| 1 < gamma < 2 | 306 |
+| 2 < gamma < 3 | 300 |
+| gamma > 3 | 276 |
+
+These bounds follow from:
+
+- 276 single-edge equilibria.
+- 24 homogeneous triangular equilibria.
+- 6 homogeneous four-node equilibria.
+
+The bounds are not exhaustive classifications of all stable equilibria.
+
+### 25.14. Exact Geometric Existence Boundary
+
+For gamma equal to one, consider a support containing one node from a lower stratum a and m-1 nodes from a higher stratum b.
+
+The positive-support existence condition is:
+
+$$
+\varepsilon<
+\frac{2m-3}
+{b(m-1)^2-a(m-2)^2}.
+$$
+
+Examples include:
+
+| Composition | Critical epsilon |
+|---|---|
+| 1, 6, 6 | 3/23 |
+| 2, 6, 6 | 3/22 |
+| 3, 6, 6 | 1/7 |
+| 1, 6, 6, 6 | 1/10 |
+| 2, 6, 6, 6 | 5/46 |
+| 3, 6, 6, 6 | 5/42 |
+
+These are analytical existence boundaries at gamma equal to one.
+
+They must not be confused with complete nonlinear stability boundaries for gamma greater than one.
+
+### 25.15. Implications for Apical Dominance
+
+The canonical operator admits 276 locally stable single-edge equilibria for gamma greater than one.
+
+Their apical distribution is:
+
+| Apical participation | Equilibria |
+|---|---:|
+| Both nodes apical | 6 |
+| One node apical | 80 |
+| No apical nodes | 190 |
+
+The persistence of non-apical stable equilibria prevents a general claim of universal apical attraction for the studied canonical operator.
+
+Geometric weighting can influence collective stability without eliminating all non-apical attractors.
+
+Local bifurcation analysis does not determine global attraction basin membership.
+
+### 25.16. New Documentation and Audit Files
+
+This research phase introduces six files:
+
+- `CANONICAL_STABILITY_MAP.md`: canonical stability campaign, spectral criteria and analytical stability boundaries.
+
+- `CANONICAL_BIFURCATIONS.md`: sampled critical curves, fold candidates and bifurcation classification.
+
+- `EQUIVARIANT_NORMAL_FORMS.md`: scalar and multidimensional equivariant normal forms, including S2, S3 and S4 symmetry-breaking mechanisms.
+
+- `canonical_stability_audit.py`: numerical equilibrium search and spectral stability audit.
+
+- `canonical_bifurcation_audit.py`: critical-point search, symmetry classification and nonlinear reduction audit.
+
+- `canonical_bifurcation_results.json`: consolidated summary of stability campaigns, critical points, equivariant normal forms and verification limits.
+
+The repository JSON is explicitly a summary artifact.
+
+It does not contain the complete individual numerical records of the original consolidated results.
+
+### 25.17. Reproduction Procedure
+
+The numerical audit environment requires:
+
+- Python 3.
+- NumPy.
+- SciPy.
+
+From the convergence directory, the intended reproduction sequence is:
+
+```bash
+python canonical_stability_audit.py
+```
+
+```bash
+python canonical_bifurcation_audit.py --stability-input canonical_stability_results.json
+```
+
+The stability JSON generated by the first command is an intermediate artifact.
+
+The repository contains a consolidated summary; full individual records are intended to be generated by executing the audit scripts.
+
+The complete reproduction procedure, including command-line compatibility and any additional intermediate inputs, must be independently checked before claiming successful end-to-end reproduction.
+
+Executing the full audit may replace the repository summary with a larger individual-record artifact.
+
+Preserving the original complete numerical output separately is recommended.
+
+The summary must not be treated as a substitute for individual numerical records, independent execution logs or exhaustive root certification.
+
+### 25.18. Verification Status
+
+| Research component | Status |
+|---|---|
+| Scalar equilibrium reduction | Analytical |
+| Spectral stability criterion | Analytical under stated hypotheses |
+| Single-edge stability | Analytical |
+| Homogeneous support thresholds | Analytical |
+| Geometric existence boundaries | Analytical |
+| Coverage of 182 compositions | Reported numerical campaign |
+| Stability classification | Reported numerical evidence |
+| Sampled critical curves | Reported numerical evidence |
+| Simple cubic reduction | Analytical and reported numerical refinement |
+| Heterogeneous S3 refinement | Reported numerical evidence |
+| Homogeneous S3 and S4 normal forms | Analytical |
+| Complete individual records in repository JSON | Not included |
+| Independent end-to-end reproduction | Pending |
+| Exhaustive root certification | Pending |
+| Global branch continuation | Pending |
+| Global basin classification | Pending |
+| Hybrid operator validation | Pending |
+| TRGC equivalence | Not established |
+
+### 25.19. Scientific Limitations
+
+The present research phase does not establish:
+
+- Exhaustive enumeration of heterogeneous equilibria.
+- Exhaustive classification of all bifurcations.
+- Continuous connectivity of all sampled critical branches.
+- Global attraction basin boundaries.
+- Universal apical dominance.
+- Global strict contractivity.
+- Equivalence between TRGC and Codigo Viajer.
+- Validation of the hybrid relational operator.
+
+Missing numerical roots must not be interpreted as mathematical nonexistence.
+
+Numerical tolerances must not be interpreted as exact algebraic certification.
+
+### 25.20. Next Research Objectives
+
+The next research phase should investigate:
+
+1. Independent reproduction of the numerical campaigns.
+2. Preservation of complete individual numerical records.
+3. Pseudo-arclength continuation of equilibrium branches.
+4. Exhaustive or interval-certified equilibrium searches.
+5. Exceptional higher-order degeneracies.
+6. Global attraction basin classification.
+7. Basin correspondence under admissible symmetry groups.
+8. Dynamical correspondence with independently specified TRGC operators.
+
+### 25.21. Convergence Interpretation
+
+The present analysis establishes a structured connection between:
+
+- Canonical geometry.
+- Effective operator symmetry.
+- Equilibrium support.
+- Spectral stability.
+- Critical multiplicity.
+- Equivariant bifurcations.
+- Relational identity.
+- Quotient-space dynamics.
+
+Symmetry breaking does not necessarily produce a new stable relational configuration.
+
+The correspondence between the mathematical structures of both projects remains a research objective rather than an established equivalence.
+
+### 25.22. Governance
+
+The established governance framework remains unchanged:
+
+- Level II retained.
+- Level III open.
+- No automatic promotion.
+- Lambda reserved exclusively for the Fourth Factor.
+- Versions v1.6 and v1.7 remain isolated.
+- No post hoc rescaling.
+- Episode 44 remains frozen.
+- No automatic validation of the hybrid operator.
+- No automatic equivalence between TRGC and Codigo Viajer.
+
+Correspondence opens the research path.
+
+Only demonstrations can establish equivalence.
+
+---
+
 
 TRCG — CÓDIGO VIAJER — PIRÁMIDE-PARÁBOLA
 
